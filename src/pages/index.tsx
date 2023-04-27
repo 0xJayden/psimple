@@ -12,6 +12,7 @@ import purpleCap from "~/assets/images/purple-cap.png";
 import whiteMushLogo from "~/assets/images/mush-logo-white.png";
 import riddle from "~/assets/images/riddle.png";
 import tricolorLogo from "~/assets/images/tricolor-logo.png";
+import redPill from "~/assets/images/red-pill.png";
 
 const myFont = localFont({ src: "../assets/fonts/Bugaki-Regular.ttf" });
 
@@ -77,20 +78,20 @@ const Home: NextPage = () => {
               </h1>
             </div>
           </div>
-          <div className="relative flex min-h-[725px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10 sm:min-h-[620px]">
+          <div className="relative flex min-h-[725px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10 sm:min-h-[620px] md:min-h-[550px] lg:max-h-[550px] lg:py-0">
             <video
               autoPlay
               muted
               loop
               playsInline
-              className="scale-5_8 scale-[7.1] brightness-[80%] sm:scale-[2.4]"
+              className="scale-5_8 scale-[7.1] brightness-[80%] sm:scale-[2.4] md:scale-[1.8] lg:scale-105"
             >
               <source
                 src="https://d1uc5ptgdyrytu.cloudfront.net/liquid-gold-1080.mp4"
                 type="video/mp4"
               />
             </video>
-            <div className="absolute flex flex-col items-center p-2 text-center">
+            <div className="absolute flex flex-col items-center p-2 text-center lg:p-10">
               <div className="relative pb-3">
                 <h1 className=" absolute -top-[2px] text-2xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-4xl">
                   Welcome to pSimple.
@@ -141,7 +142,7 @@ const Home: NextPage = () => {
                   pSimple!
                 </p>
               </div>
-              <div className="flex w-full justify-between px-3 py-5">
+              <div className="flex w-full justify-between px-3 py-5 md:px-20">
                 <div className="relative">
                   <Image
                     className="max-w-[120px] drop-shadow-[0_10px_10px_rgba(0,0,0,1)]"
@@ -216,7 +217,7 @@ const Home: NextPage = () => {
             </div>
           </div>
           <div className="relative w-full overflow-hidden bg-[rgb(31,25,44)] p-2 py-10">
-            <h1 className="text-center text-4xl font-bold text-[rgb(251,221,112)]">
+            <h1 className="bg-gradient-to-b from-[rgb(228,201,101)] via-[rgb(255,249,210)] to-[rgb(228,201,101)] bg-clip-text text-center text-4xl font-bold text-transparent sm:text-5xl">
               THE GOLDEN AGE
             </h1>
             <video
@@ -224,7 +225,7 @@ const Home: NextPage = () => {
               muted
               loop
               playsInline
-              className="absolute -left-[90px] bottom-10 max-w-[300px] mix-blend-screen sm:bottom-16 sm:max-w-[400px]"
+              className="absolute -left-[90px] bottom-10 max-w-[300px] mix-blend-screen sm:bottom-16 sm:max-w-[400px] md:max-w-[500px] lg:bottom-0 lg:max-w-[700px]"
             >
               <source
                 src="https://d1uc5ptgdyrytu.cloudfront.net/golden-sphere.mp4"
@@ -232,11 +233,81 @@ const Home: NextPage = () => {
               />
             </video>
             <div className="relative flex w-full justify-end">
-              <Image className="w-[80%]" src={riddle} alt="" />
+              <Image className="w-[80%] max-w-[600px]" src={riddle} alt="" />
               {/* <div className="radial-gradient absolute right-5 h-[200px] w-[200px] rounded-full opacity-50"></div>
             <p className="w-2/3 p-5 text-center font-semibold italic text-[rgb(251,221,112)] drop-shadow">
               {`"With a shiny hue and a heart of gold, you may find me among the fold. For those who behold, riches untold. 3 of me, one unto each, a golden treat, just within reach."`}
             </p> */}
+            </div>
+          </div>
+          <div className="relative flex items-center justify-center bg-[rgb(236,99,94)] p-2 sm:p-5 md:p-10">
+            <Image
+              className="absolute w-4/5 opacity-40 md:max-w-[600px] lg:max-w-[490px]"
+              src={redPill}
+              alt=""
+            />
+            <div className="max-w-[1200px] space-y-5">
+              <div className="relative text-end">
+                <h1 className="absolute -top-[2px] right-0 text-2xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-4xl lg:text-5xl">
+                  THE PSCIENCE
+                </h1>
+                <h1 className="absolute right-0 top-[2px] text-2xl font-bold text-red-500 drop-shadow sm:text-4xl lg:text-5xl">
+                  THE PSCIENCE
+                </h1>
+                <h1 className="text-2xl font-bold text-white drop-shadow sm:text-4xl lg:text-5xl">
+                  THE PSCIENCE
+                </h1>
+              </div>
+              <div className="relative space-y-5">
+                <div className="space-y-3 text-end text-sm lg:text-base">
+                  <p className="text-white">
+                    Psilocybin is a naturally occurring psychoactive compound
+                    found in certain species of mushrooms. Over the years,
+                    psilocybin has been widely studied for its therapeutic
+                    potential, particularly in the treatment of mental health
+                    disorders such as depression, anxiety, and PTSD. In recent
+                    times, microdosing, or taking small amounts of psilocybin at
+                    regular intervals, has gained popularity as a method of
+                    enhancing mental health and cognitive function.
+                  </p>
+
+                  <p className="text-white">
+                    {`Studies have shown that psilocybin microdosing can have a
+                positive effect on mental health, including reducing symptoms of
+                anxiety and depression, improving mood and creativity, and
+                increasing overall well-being. In a randomized, double-blind,
+                placebo-controlled study, conducted by Fadiman and Korb (2019),
+                98 participants reported a significant improvement in their
+                mental health after microdosing psilocybin for four weeks. The
+                participants reported feeling more open, creative, focused, and
+                productive, while also experiencing a reduction in anxiety and
+                depression symptoms.`}
+                  </p>
+                </div>
+                <div className="space-y-3 text-sm lg:text-base">
+                  <p className="text-white">
+                    Furthermore, psilocybin has been found to have a unique
+                    ability to affect brain function by increasing neural
+                    plasticity, or the brain's ability to adapt and change in
+                    response to new experiences. This increase in plasticity has
+                    been linked to the positive effects of psilocybin on mental
+                    health, as it can help individuals to break out of negative
+                    patterns of thought and behavior.
+                  </p>
+
+                  <p className="text-white">
+                    {`In a study published in the Journal of Psychopharmacology,
+                Stamets et al. (2018) found that psilocybin microdosing could
+                have profound effects on mental health, stating that
+                "microdosing with psilocybin may improve psychological
+                well-being, increase cognitive flexibility, enhance creativity,
+                and facilitate emotional regulation." They went on to note that
+                these effects may be due to the modulation of the serotonin
+                system, which is involved in regulating mood, anxiety, and
+                cognitive function.`}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
