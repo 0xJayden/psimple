@@ -286,13 +286,13 @@ const Home: NextPage = () => {
                 </div>
                 <div className="space-y-3 text-sm lg:text-base">
                   <p className="text-white">
-                    Furthermore, psilocybin has been found to have a unique
+                    {`Furthermore, psilocybin has been found to have a unique
                     ability to affect brain function by increasing neural
                     plasticity, or the brain's ability to adapt and change in
                     response to new experiences. This increase in plasticity has
                     been linked to the positive effects of psilocybin on mental
                     health, as it can help individuals to break out of negative
-                    patterns of thought and behavior.
+                    patterns of thought and behavior.`}
                   </p>
 
                   <p className="text-white">
