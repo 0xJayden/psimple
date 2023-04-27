@@ -22,7 +22,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     setTimeout(() => {
       setHide(true);
-    }, 6600);
+    }, 6300);
 
     setTimeout(() => {
       setHide2(true);
