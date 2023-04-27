@@ -41,7 +41,7 @@ const Home: NextPage = () => {
         className="relative flex min-h-screen flex-col items-center overflow-hidden bg-black"
       >
         {!hide2 && (
-          <div className="z-20 flex h-screen items-center justify-center p-5">
+          <div className="z-20 flex h-screen items-center justify-center p-5 sm:p-20">
             <Image className="animate-show2" src={tricolorLogo} alt="" />
           </div>
         )}
@@ -50,7 +50,7 @@ const Home: NextPage = () => {
             autoPlay={!hide2 ? true : false}
             muted
             playsInline
-            className="absolute top-0 z-10 h-screen scale-[4.2] animate-hide"
+            className="absolute top-0 z-10 h-screen scale-[4.2] animate-hide sm:scale-[2.5]"
           >
             <source
               src="https://d1uc5ptgdyrytu.cloudfront.net/open.mp4"
@@ -64,20 +64,24 @@ const Home: NextPage = () => {
             <Image className="h-full max-w-[50px]" src={whiteMushLogo} alt="" />
           </div>
           <div className="relative flex h-[440px] items-center justify-center overflow-hidden">
-            <Image className="scale-[2.3] brightness-90" src={bg} alt="" />
-            <div className="absolute space-y-4 text-center">
+            <Image
+              className="scale-2_1 scale-[2.5] brightness-90 sm:scale-100"
+              src={bg}
+              alt=""
+            />
+            <div className="absolute space-y-4 p-2 text-center">
               <h1 className="text-4xl font-bold text-white drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-5xl">
                 A GOLDEN AGE OF WELLNESS AWAITS...
               </h1>
             </div>
           </div>
-          <div className="relative flex min-h-[730px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10">
+          <div className="relative flex min-h-[730px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10 sm:min-h-[620px]">
             <video
               autoPlay
               muted
               loop
               playsInline
-              className="scale-[6] brightness-[80%] lg:-bottom-[20px] lg:left-[80px] lg:ml-0 lg:max-w-[412px] xl:left-[208px]"
+              className="scale-5_8 scale-[7.1] brightness-[80%] sm:scale-[2.4]"
             >
               <source
                 src="https://d1uc5ptgdyrytu.cloudfront.net/liquid-gold.mp4"
@@ -86,24 +90,24 @@ const Home: NextPage = () => {
             </video>
             <div className="absolute flex flex-col items-center p-2 text-center">
               <div className="relative">
-                <h1 className=" absolute -top-[2px] text-3xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-5xl">
+                <h1 className=" absolute -top-[2px] text-2xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-4xl sm:text-5xl">
                   Welcome to pSimple.
                 </h1>
-                <h1 className=" absolute top-[2px] text-3xl font-bold text-red-500 drop-shadow sm:text-5xl">
+                <h1 className=" absolute top-[2px] text-2xl font-bold text-red-500 drop-shadow sm:text-4xl sm:text-5xl">
                   Welcome to pSimple.
                 </h1>
-                <h1 className="text-3xl font-bold text-white drop-shadow sm:text-5xl">
+                <h1 className="text-2xl font-bold text-white drop-shadow sm:text-4xl sm:text-5xl">
                   Welcome to pSimple.
                 </h1>
               </div>
               <div className="relative pb-5">
-                <h1 className="absolute -top-[2px] text-3xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-5xl">
+                <h1 className="absolute -top-[2px] text-2xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-4xl sm:text-5xl">
                   Making psilocybin, simple.
                 </h1>
-                <h1 className="absolute top-[2px] text-3xl font-bold text-red-500 drop-shadow sm:text-5xl">
+                <h1 className="absolute top-[2px] text-2xl font-bold text-red-500 drop-shadow sm:text-4xl sm:text-5xl">
                   Making psilocybin, simple.
                 </h1>
-                <h1 className="text-3xl font-bold text-white drop-shadow sm:text-5xl">
+                <h1 className="text-2xl font-bold text-white drop-shadow sm:text-4xl sm:text-5xl">
                   Making psilocybin, simple.
                 </h1>
               </div>
@@ -218,7 +222,7 @@ const Home: NextPage = () => {
               muted
               loop
               playsInline
-              className="absolute -left-[90px] bottom-10 max-w-[300px] mix-blend-screen"
+              className="absolute -left-[90px] bottom-10 max-w-[300px] mix-blend-screen sm:bottom-16 sm:max-w-[400px]"
             >
               <source
                 src="https://d1uc5ptgdyrytu.cloudfront.net/golden-sphere.mp4"

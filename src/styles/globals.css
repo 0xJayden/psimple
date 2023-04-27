@@ -9,3 +9,13 @@
     rgba(0, 0, 0, 0)
   );
 }
+
+@media (min-width: 375px) {
+  .scale-2_1 {
+    transform: scale(2.1);
+  }
+
+  .scale-5_8 {
+    transform: scale(5.8);
+  }
+}
