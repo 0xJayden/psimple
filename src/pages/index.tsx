@@ -22,11 +22,11 @@ const Home: NextPage = () => {
   useEffect(() => {
     setTimeout(() => {
       setHide(true);
-    }, 6800);
+    }, 7000);
 
     setTimeout(() => {
       setHide2(true);
-    }, 2500);
+    }, 2900);
   }, []);
 
   return (
@@ -38,25 +38,27 @@ const Home: NextPage = () => {
       </Head>
       <main
         style={myFont.style}
-        className="relative flex min-h-screen flex-col items-center overflow-hidden bg-black"
+        className="relative flex min-h-screen flex-col items-center bg-black"
       >
         {!hide2 && (
-          <div className="z-20 flex h-screen items-center justify-center p-5 sm:p-20">
+          <div className="fixed inset-0 z-20 flex items-center justify-center p-5 sm:p-20">
             <Image className="animate-show2" src={tricolorLogo} alt="" />
           </div>
         )}
         {!hide && (
-          <video
-            autoPlay={!hide2 ? true : false}
-            muted
-            playsInline
-            className="absolute top-0 z-10 h-screen scale-[4.2] animate-hide sm:scale-[2.5]"
-          >
-            <source
-              src="https://d1uc5ptgdyrytu.cloudfront.net/open.mp4"
-              type="video/mp4"
-            />
-          </video>
+          <div className="fixed inset-0 z-10 flex items-center justify-center overflow-hidden">
+            <video
+              autoPlay={!hide2}
+              muted
+              playsInline
+              className="scale-[4.2] animate-hide sm:scale-[2.5]"
+            >
+              <source
+                src="https://d1uc5ptgdyrytu.cloudfront.net/open.mp4"
+                type="video/mp4"
+              />
+            </video>
+          </div>
         )}
         <div className="animate-show">
           <div className="fixed top-0 z-10 flex w-full justify-between p-2">

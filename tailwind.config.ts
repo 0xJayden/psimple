@@ -24,7 +24,7 @@ export default {
       },
     },
     animation: {
-      hide: "hide 7s ease-in-out",
+      hide: "hide 7200ms ease-in-out",
       show: "show 5s ease-in-out",
       show2: "show2 3s ease-in-out",
     },
