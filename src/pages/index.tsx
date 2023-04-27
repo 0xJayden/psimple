@@ -77,7 +77,7 @@ const Home: NextPage = () => {
               </h1>
             </div>
           </div>
-          <div className="relative flex min-h-[730px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10 sm:min-h-[620px]">
+          <div className="relative flex min-h-[725px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10 sm:min-h-[620px]">
             <video
               autoPlay
               muted
@@ -86,7 +86,7 @@ const Home: NextPage = () => {
               className="scale-5_8 scale-[7.1] brightness-[80%] sm:scale-[2.4]"
             >
               <source
-                src="https://d1uc5ptgdyrytu.cloudfront.net/liquid-gold.mp4"
+                src="https://d1uc5ptgdyrytu.cloudfront.net/liquid-gold-1080.mp4"
                 type="video/mp4"
               />
             </video>
