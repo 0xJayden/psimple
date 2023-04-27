@@ -2,6 +2,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import localFont from "next/font/local";
+import { useEffect, useState } from "react";
 
 import bg from "~/assets/images/bg.png";
 import logo from "~/assets/images/logo.png";
@@ -10,17 +11,22 @@ import blueCap from "~/assets/images/blue-cap.png";
 import purpleCap from "~/assets/images/purple-cap.png";
 import whiteMushLogo from "~/assets/images/mush-logo-white.png";
 import riddle from "~/assets/images/riddle.png";
-import { useEffect, useState } from "react";
+import tricolorLogo from "~/assets/images/tricolor-logo.png";
 
 const myFont = localFont({ src: "../assets/fonts/Bugaki-Regular.ttf" });
 
 const Home: NextPage = () => {
   const [hide, setHide] = useState(false);
+  const [hide2, setHide2] = useState(false);
 
   useEffect(() => {
-    const x = setTimeout(() => {
+    setTimeout(() => {
       setHide(true);
-    }, 5000);
+    }, 6800);
+
+    setTimeout(() => {
+      setHide2(true);
+    }, 2500);
   }, []);
 
   return (
@@ -32,11 +38,16 @@ const Home: NextPage = () => {
       </Head>
       <main
         style={myFont.style}
-        className="relative flex min-h-screen flex-col items-center overflow-hidden"
+        className="relative flex min-h-screen flex-col items-center overflow-hidden bg-black"
       >
+        {!hide2 && (
+          <div className="z-20 flex h-screen items-center justify-center p-5">
+            <Image className="animate-show2" src={tricolorLogo} alt="" />
+          </div>
+        )}
         {!hide && (
           <video
-            autoPlay
+            autoPlay={!hide2 ? true : false}
             muted
             playsInline
             className="absolute top-0 z-10 h-screen scale-[4.2] animate-hide"
