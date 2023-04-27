@@ -165,13 +165,13 @@ const Home: NextPage = () => {
             </div>
             <div className="relative">
               <p className="absolute -top-[2px] text-4xl font-semibold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)]">
-                FIND GOLD, WIN BIG. IT'S THAT PSIMPLE.
+                {`FIND GOLD, WIN BIG. IT'S THAT PSIMPLE.`}
               </p>
               <p className="absolute top-[2px] text-4xl font-semibold text-red-500 drop-shadow">
-                FIND GOLD, WIN BIG. IT'S THAT PSIMPLE.
+                {`FIND GOLD, WIN BIG. IT'S THAT PSIMPLE.`}
               </p>
               <p className="text-4xl font-semibold text-white drop-shadow">
-                FIND GOLD, WIN BIG. IT'S THAT PSIMPLE.
+                {`FIND GOLD, WIN BIG. IT'S THAT PSIMPLE.`}
               </p>
             </div>
           </div>
