@@ -22,11 +22,11 @@ const Home: NextPage = () => {
   useEffect(() => {
     setTimeout(() => {
       setHide(true);
-    }, 7000);
+    }, 6800);
 
     setTimeout(() => {
       setHide2(true);
-    }, 2900);
+    }, 3000);
   }, []);
 
   return (

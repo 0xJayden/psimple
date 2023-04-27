@@ -12,7 +12,7 @@ export default {
         },
         show: {
           "0%": { opacity: "0" },
-          "50%": { opacity: "0" },
+          // "50%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
         show2: {
@@ -24,9 +24,9 @@ export default {
       },
     },
     animation: {
-      hide: "hide 7200ms ease-in-out",
-      show: "show 5s ease-in-out",
-      show2: "show2 3s ease-in-out",
+      hide: "hide 7000ms ease-in-out",
+      show: "show 4000ms ease-in-out",
+      show2: "show2 3500ms ease-in-out",
     },
   },
   plugins: [],
