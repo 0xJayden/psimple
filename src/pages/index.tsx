@@ -48,10 +48,10 @@ const Home: NextPage = () => {
         {!hide && (
           <div className="fixed inset-0 z-10 flex items-center justify-center overflow-hidden">
             <video
-              autoPlay={!hide2}
+              autoPlay
               muted
               playsInline
-              className="scale-[4.2] animate-hide sm:scale-[2.5]"
+              className="scale-[4.1] animate-hide sm:scale-[2.3]"
             >
               <source
                 src="https://d1uc5ptgdyrytu.cloudfront.net/open.mp4"
@@ -91,25 +91,25 @@ const Home: NextPage = () => {
               />
             </video>
             <div className="absolute flex flex-col items-center p-2 text-center">
-              <div className="relative">
-                <h1 className=" absolute -top-[2px] text-2xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-4xl sm:text-5xl">
+              <div className="relative pb-3">
+                <h1 className=" absolute -top-[2px] text-2xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-4xl">
                   Welcome to pSimple.
                 </h1>
-                <h1 className=" absolute top-[2px] text-2xl font-bold text-red-500 drop-shadow sm:text-4xl sm:text-5xl">
+                <h1 className=" absolute top-[2px] text-2xl font-bold text-red-500 drop-shadow sm:text-4xl">
                   Welcome to pSimple.
                 </h1>
-                <h1 className="text-2xl font-bold text-white drop-shadow sm:text-4xl sm:text-5xl">
+                <h1 className="text-2xl font-bold text-white drop-shadow sm:text-4xl">
                   Welcome to pSimple.
                 </h1>
               </div>
               <div className="relative pb-5">
-                <h1 className="absolute -top-[2px] text-2xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-4xl sm:text-5xl">
+                <h1 className="absolute -top-[2px] text-2xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-4xl">
                   Making psilocybin, simple.
                 </h1>
-                <h1 className="absolute top-[2px] text-2xl font-bold text-red-500 drop-shadow sm:text-4xl sm:text-5xl">
+                <h1 className="absolute top-[2px] text-2xl font-bold text-red-500 drop-shadow sm:text-4xl">
                   Making psilocybin, simple.
                 </h1>
-                <h1 className="text-2xl font-bold text-white drop-shadow sm:text-4xl sm:text-5xl">
+                <h1 className="text-2xl font-bold text-white drop-shadow sm:text-4xl">
                   Making psilocybin, simple.
                 </h1>
               </div>
