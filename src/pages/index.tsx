@@ -52,28 +52,28 @@ const Home: NextPage = () => {
           </video>
           <div className="absolute flex flex-col items-center p-2 text-center">
             <div className="relative">
-              <h1 className=" absolute -top-[2px] text-4xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-5xl">
+              <h1 className=" absolute -top-[2px] text-3xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-5xl">
                 Welcome to pSimple.
               </h1>
-              <h1 className=" absolute top-[2px] text-4xl font-bold text-red-500 drop-shadow sm:text-5xl">
+              <h1 className=" absolute top-[2px] text-3xl font-bold text-red-500 drop-shadow sm:text-5xl">
                 Welcome to pSimple.
               </h1>
-              <h1 className="text-4xl font-bold text-white drop-shadow sm:text-5xl">
+              <h1 className="text-3xl font-bold text-white drop-shadow sm:text-5xl">
                 Welcome to pSimple.
               </h1>
             </div>
             <div className="relative pb-5">
-              <h1 className="absolute -top-[2px] text-4xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-5xl">
+              <h1 className="absolute -top-[2px] text-3xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-5xl">
                 Making psilocybin, simple.
               </h1>
-              <h1 className="absolute top-[2px] text-4xl font-bold text-red-500 drop-shadow sm:text-5xl">
+              <h1 className="absolute top-[2px] text-3xl font-bold text-red-500 drop-shadow sm:text-5xl">
                 Making psilocybin, simple.
               </h1>
-              <h1 className="text-4xl font-bold text-white drop-shadow sm:text-5xl">
+              <h1 className="text-3xl font-bold text-white drop-shadow sm:text-5xl">
                 Making psilocybin, simple.
               </h1>
             </div>
-            <div className="relative pb-3">
+            <div className="relative pb-5">
               <p className="absolute -top-[1px] text-lg font-semibold leading-5 text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)]">
                 Empowering people to unlock their full potential through subtle
                 microdoses of organic & adaptogenic mushroom compounds.
@@ -101,7 +101,7 @@ const Home: NextPage = () => {
                 pSimple!
               </p>
             </div>
-            <div className="flex w-full justify-between px-3 pb-5 pt-10">
+            <div className="flex w-full justify-between px-3 py-5">
               <div className="relative">
                 <Image
                   className="max-w-[120px] drop-shadow-[0_10px_10px_rgba(0,0,0,1)]"
@@ -184,7 +184,7 @@ const Home: NextPage = () => {
             muted
             loop
             playsInline
-            className="absolute -left-20 bottom-10 max-w-[300px] mix-blend-screen"
+            className="absolute -left-[90px] bottom-10 max-w-[300px] mix-blend-screen"
           >
             <source
               src="https://d1uc5ptgdyrytu.cloudfront.net/golden-sphere.mp4"
