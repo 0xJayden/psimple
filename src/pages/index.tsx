@@ -22,7 +22,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     setTimeout(() => {
       setHide(true);
-    }, 6800);
+    }, 6600);
 
     setTimeout(() => {
       setHide2(true);
@@ -46,15 +46,15 @@ const Home: NextPage = () => {
           </div>
         )}
         {!hide && (
-          <div className="fixed inset-0 z-10 flex items-center justify-center overflow-hidden">
+          <div className="fixed inset-0 z-10 flex animate-hide items-center justify-center overflow-hidden">
             <video
               autoPlay
               muted
               playsInline
-              className="scale-[4.1] animate-hide sm:scale-[2.3]"
+              className="scale-[4.5] sm:scale-[2.6]"
             >
               <source
-                src="https://d1uc5ptgdyrytu.cloudfront.net/open.mp4"
+                src="https://d1uc5ptgdyrytu.cloudfront.net/open_1080.mp4"
                 type="video/mp4"
               />
             </video>
