@@ -18,4 +18,40 @@
   .scale-5_8 {
     transform: scale(5.8);
   }
+
+  .textLg {
+    font-size: 1.12rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .scale-bg2 {
+    transform: scale(1);
+  }
+}
+
+@media (min-width: 1024px) {
+  .height-bg2 {
+    height: 550px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .height-bg3 {
+    height: 700px;
+  }
+}
+
+@media (min-width: 1650px) {
+  .scale-bg1 {
+    transform: scale(1.1);
+  }
+
+  .bottom-p1 {
+    bottom: 200px;
+  }
+
+  .height-bg1 {
+    height: 950px;
+  }
 }

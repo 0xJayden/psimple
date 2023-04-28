@@ -43,7 +43,11 @@ const Home: NextPage = () => {
       >
         {!hide2 && (
           <div className="fixed inset-0 z-20 flex items-center justify-center p-5 sm:p-20">
-            <Image className="animate-show2" src={tricolorLogo} alt="" />
+            <Image
+              className="max-w-[200px] animate-show2"
+              src={tricolorLogo}
+              alt=""
+            />
           </div>
         )}
         {!hide && (
@@ -52,7 +56,7 @@ const Home: NextPage = () => {
               autoPlay
               muted
               playsInline
-              className="scale-[4.5] sm:scale-[2.6]"
+              className="scale-[4.5] sm:scale-[2.8] md:scale-[2]"
             >
               <source
                 src="https://d1uc5ptgdyrytu.cloudfront.net/open_1080.mp4"
@@ -62,20 +66,25 @@ const Home: NextPage = () => {
           </div>
         )}
         <div className="animate-show">
-          <div className="fixed top-0 z-10 flex w-full justify-between p-2">
+          <div className="fixed top-0 z-10 flex w-full justify-between p-2 lg:p-5 lg:px-10">
             <Image className=" h-full max-w-[150px]" src={logo} alt="" />
             <Image className="h-full max-w-[50px]" src={whiteMushLogo} alt="" />
           </div>
-          <div className="relative flex h-[440px] items-center justify-center overflow-hidden">
+          <div className="height-bg1 height-bg2 height-bg3 relative flex h-[440px] items-center justify-center overflow-hidden">
             <Image
-              className="scale-2_1 scale-[2.5] brightness-90 sm:scale-100"
+              className="scale-2_1 scale-bg1 scale-bg2 scale-[2.5] brightness-90"
               src={bg}
               alt=""
             />
             <div className="absolute space-y-4 p-2 text-center">
-              <h1 className="text-4xl font-bold text-white drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-5xl">
+              <h1 className="bg-gradient-to-b from-[rgb(255,224,112)] via-[rgb(255,249,210)] to-[rgb(255,224,112)] bg-clip-text text-4xl font-bold text-transparent drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-5xl xl:text-6xl">
                 A GOLDEN AGE OF WELLNESS AWAITS...
               </h1>
+            </div>
+            <div className="bottom-p1 absolute bottom-5 left-5 lg:left-20 xl:left-[300px]">
+              <p className="bg-gradient-to-b from-[rgb(228,201,101)] via-[rgb(255,249,210)] to-[rgb(228,201,101)] bg-clip-text text-5xl text-transparent drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-7xl">
+                25% OFF
+              </p>
             </div>
           </div>
           <div className="relative flex min-h-[725px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10 sm:min-h-[620px] md:min-h-[550px] lg:max-h-[550px] lg:py-0">
@@ -216,28 +225,37 @@ const Home: NextPage = () => {
               </div>
             </div>
           </div>
-          <div className="relative w-full overflow-hidden bg-[rgb(31,25,44)] p-2 py-10">
-            <h1 className="bg-gradient-to-b from-[rgb(228,201,101)] via-[rgb(255,249,210)] to-[rgb(228,201,101)] bg-clip-text text-center text-4xl font-bold text-transparent sm:text-5xl">
-              THE GOLDEN AGE
-            </h1>
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="absolute -left-[90px] bottom-10 max-w-[300px] mix-blend-screen sm:bottom-16 sm:max-w-[400px] md:max-w-[500px] lg:bottom-0 lg:max-w-[700px]"
-            >
-              <source
-                src="https://d1uc5ptgdyrytu.cloudfront.net/golden-sphere.mp4"
-                type="video/mp4"
-              />
-            </video>
-            <div className="relative flex w-full justify-end">
-              <Image className="w-[80%] max-w-[600px]" src={riddle} alt="" />
-              {/* <div className="radial-gradient absolute right-5 h-[200px] w-[200px] rounded-full opacity-50"></div>
-            <p className="w-2/3 p-5 text-center font-semibold italic text-[rgb(251,221,112)] drop-shadow">
-              {`"With a shiny hue and a heart of gold, you may find me among the fold. For those who behold, riches untold. 3 of me, one unto each, a golden treat, just within reach."`}
-            </p> */}
+          <div className="flex w-full items-center justify-center overflow-hidden bg-[rgb(31,25,44)] p-2 py-10">
+            <div className="relative w-full max-w-[1200px]">
+              <h1 className="bg-gradient-to-b from-[rgb(228,201,101)] via-[rgb(255,249,210)] to-[rgb(228,201,101)] bg-clip-text text-center text-4xl font-bold text-transparent drop-shadow-[0_3px_10px_rgba(150,150,0,1)] sm:text-6xl sm:drop-shadow-[0_5px_13px_rgba(150,150,0,1)]">
+                THE GOLDEN AGE
+              </h1>
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute -left-[90px] bottom-14 max-w-[300px] mix-blend-screen sm:bottom-[70px] sm:max-w-[430px] md:-left-[150px] md:bottom-10 md:max-w-[600px] lg:bottom-5 lg:max-w-[750px]"
+              >
+                <source
+                  src="https://d1uc5ptgdyrytu.cloudfront.net/golden-sphere.mp4"
+                  type="video/mp4"
+                />
+              </video>
+              <div className="relative flex w-full justify-end">
+                <Image
+                  className="w-[80%] max-w-[600px] lg:mr-20"
+                  src={riddle}
+                  alt=""
+                />
+                {/* <div className="radial-gradient absolute right-5 h-[200px] w-[200px] rounded-full opacity-50"></div>
+                <p className="w-2/3 p-5 text-center font-semibold italic text-[rgb(251,221,112)] drop-shadow">
+                {`"With a shiny hue and a heart of gold, you may find me among the fold. For those who behold, riches untold. 3 of me, one unto each, a golden treat, just within reach."`}
+                </p> */}
+              </div>
+              <p className="textLg bg-gradient-to-b from-[rgb(228,201,101)] via-[rgb(255,249,210)] to-[rgb(228,201,101)] bg-clip-text pt-10 text-center text-sm text-transparent drop-shadow-[0_0_5px_rgba(150,150,0,1)] sm:text-3xl sm:drop-shadow-[0_3px_10px_rgba(150,150,0,1)] md:text-4xl">
+                25% OFF UNTIL ALL 3 ARE FOUND!
+              </p>
             </div>
           </div>
           <div className="relative flex items-center justify-center bg-[rgb(236,99,94)] p-2 sm:p-5 md:p-10">
