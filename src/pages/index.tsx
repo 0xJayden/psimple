@@ -23,7 +23,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     setTimeout(() => {
       setHide(true);
-    }, 6300);
+    }, 6000);
 
     setTimeout(() => {
       setHide2(true);
@@ -59,7 +59,7 @@ const Home: NextPage = () => {
               className="scale-[4.5] sm:scale-[2.8] md:scale-[2]"
             >
               <source
-                src="https://d1uc5ptgdyrytu.cloudfront.net/open_1080.mp4"
+                src="https://d1uc5ptgdyrytu.cloudfront.net/open-720.mp4"
                 type="video/mp4"
               />
             </video>
