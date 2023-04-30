@@ -22,6 +22,11 @@
   .textLg {
     font-size: 1.12rem;
   }
+
+  .max-w-sphere {
+    max-width: 350px;
+    bottom: 30px;
+  }
 }
 
 @media (min-width: 640px) {

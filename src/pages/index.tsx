@@ -225,23 +225,23 @@ const Home: NextPage = () => {
               </div>
             </div>
           </div>
-          <div className="flex w-full items-center justify-center overflow-hidden bg-[rgb(31,25,44)] p-2 py-10">
-            <div className="relative w-full max-w-[1200px]">
-              <h1 className="bg-gradient-to-b from-[rgb(228,201,101)] via-[rgb(255,249,210)] to-[rgb(228,201,101)] bg-clip-text text-center text-4xl font-bold text-transparent drop-shadow-[0_3px_10px_rgba(150,150,0,1)] sm:text-6xl sm:drop-shadow-[0_5px_13px_rgba(150,150,0,1)]">
-                THE GOLDEN AGE
-              </h1>
+          <div className="flex w-full items-center justify-center overflow-hidden bg-[rgb(152,92,255)] p-2 py-10">
+            <div className="relative w-full max-w-[1250px]">
               <video
                 autoPlay
                 muted
                 loop
                 playsInline
-                className="absolute -left-[90px] bottom-14 max-w-[300px] mix-blend-screen sm:bottom-[70px] sm:max-w-[430px] md:-left-[150px] md:bottom-10 md:max-w-[600px] lg:bottom-5 lg:max-w-[750px]"
+                className="max-w-sphere absolute -left-5 bottom-10 max-w-[300px] sm:bottom-[40px] sm:max-w-[510px] md:bottom-5 md:max-w-[700px] lg:-bottom-5 lg:left-16 lg:max-w-[850px] xl:-bottom-20 xl:max-w-[1100px]"
               >
                 <source
-                  src="https://d1uc5ptgdyrytu.cloudfront.net/golden-sphere.mp4"
+                  src="https://d1uc5ptgdyrytu.cloudfront.net/golden-sphere-purple.mp4"
                   type="video/mp4"
                 />
               </video>
+              <h1 className=" bg-gradient-to-b from-[rgb(228,201,101)] via-[rgb(255,249,210)] to-[rgb(228,201,101)] bg-clip-text text-center text-4xl font-bold text-transparent drop-shadow-[0_3px_10px_rgba(150,150,0,1)] sm:text-6xl sm:drop-shadow-[0_5px_13px_rgba(150,150,0,1)]">
+                THE GOLDEN AGE
+              </h1>
               <div className="relative flex w-full justify-end">
                 <Image
                   className="w-[80%] max-w-[600px] lg:mr-20"
