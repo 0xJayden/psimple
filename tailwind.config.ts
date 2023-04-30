@@ -16,7 +16,7 @@ export default {
           "100%": { opacity: "1" },
         },
         show2: {
-          "0%": { opacity: "0", transform: "scale(1.2)" },
+          "0%": { opacity: "0", transform: "scale(1.5)" },
           // "25%": { opacity: "1" },
           "50%": { opacity: "1", transform: "scale(1)" },
           "100%": { opacity: "0" },
@@ -24,9 +24,9 @@ export default {
       },
     },
     animation: {
-      hide: "hide 7000ms ease-in-out",
+      hide: "hide 9000ms ease-in-out",
       show: "show 4000ms ease-in-out",
-      show2: "show2 3500ms ease-in-out",
+      show2: "show2 5500ms ease-in-out",
     },
   },
   plugins: [],

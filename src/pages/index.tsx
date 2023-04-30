@@ -23,11 +23,11 @@ const Home: NextPage = () => {
   useEffect(() => {
     setTimeout(() => {
       setHide(true);
-    }, 6300);
+    }, 8600);
 
     setTimeout(() => {
       setHide2(true);
-    }, 3000);
+    }, 5000);
   }, []);
 
   return (
@@ -225,7 +225,7 @@ const Home: NextPage = () => {
               </div>
             </div>
           </div>
-          <div className="flex w-full items-center justify-center overflow-hidden bg-[rgb(138,96,241)] p-2 py-10">
+          <div className="flex w-full items-center justify-center overflow-hidden bg-[rgb(133,93,238)] p-2 py-10">
             <div className="relative w-full max-w-[1250px]">
               <video
                 autoPlay
