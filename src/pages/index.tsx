@@ -95,13 +95,13 @@ const Home: NextPage = () => {
               </p>
             </div>
           </div>
-          <div className="relative flex min-h-[835px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10 sm:min-h-[750px] md:min-h-[700px] lg:min-h-[980px] lg:py-0">
+          <div className="relative flex min-h-[835px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10 sm:min-h-[750px] md:min-h-[700px] lg:min-h-[1000px] lg:py-0">
             <video
               autoPlay
               muted
               loop
               playsInline
-              className="scale-5_8 scale-[8.3] brightness-[80%] sm:scale-[3.1] md:scale-[2.1] lg:scale-[2.5] xl:scale-[1.85]"
+              className="scale-5_8 scale-[8.3] brightness-[80%] sm:scale-[3.1] md:scale-[2.1] lg:scale-[2.55] xl:scale-[1.85]"
             >
               <source
                 src="https://d1uc5ptgdyrytu.cloudfront.net/liquid-gold-1080.mp4"
@@ -226,13 +226,13 @@ const Home: NextPage = () => {
                 alt=""
               />
               <div className="relative">
-                <p className="absolute -top-[2px] text-4xl font-semibold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)]">
+                <p className="absolute -top-[2px] text-4xl font-semibold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] lg:text-[37px] xl:text-[45px]">
                   {`FIND GOLD, WIN BIG. IT'S THAT PSIMPLE.`}
                 </p>
-                <p className="absolute top-[2px] text-4xl font-semibold text-red-500 drop-shadow">
+                <p className="absolute top-[2px] text-4xl font-semibold text-red-500 drop-shadow lg:text-[37px] xl:text-[45px]">
                   {`FIND GOLD, WIN BIG. IT'S THAT PSIMPLE.`}
                 </p>
-                <p className="text-4xl font-semibold text-white drop-shadow">
+                <p className="text-4xl font-semibold text-white drop-shadow lg:text-[37px] xl:text-[45px]">
                   {`FIND GOLD, WIN BIG. IT'S THAT PSIMPLE.`}
                 </p>
               </div>
