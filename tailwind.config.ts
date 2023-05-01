@@ -24,9 +24,15 @@ export default {
         },
         show3: {
           "0%": { opacity: "0", transform: "translateX(-80px)" },
+          "10%": { opacity: "0", transform: "translateX(-80px)" },
           "20%": { opacity: "1", transform: "translateX(0px)" },
           "50%": { opacity: "1" },
           "100%": { opacity: "0" },
+        },
+        float: {
+          "0%": { transform: "translateY(20px)" },
+          "50%": { transform: "translateY(-20px)" },
+          "100%": { transform: "translateY(20px)" },
         },
       },
     },
@@ -35,6 +41,7 @@ export default {
       show: "show 4000ms ease-in-out",
       show2: "show2 7300ms ease-in-out",
       show3: "show3 7300ms ease-in-out",
+      float: "float 2000ms ease-in-out infinite",
     },
   },
   plugins: [],

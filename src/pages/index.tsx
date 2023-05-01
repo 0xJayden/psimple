@@ -2,6 +2,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import localFont from "next/font/local";
+import { Raleway, Roboto_Mono } from "next/font/google";
 import { useEffect, useState } from "react";
 
 import bg from "~/assets/images/bg.png";
@@ -13,9 +14,14 @@ import whiteMushLogo from "~/assets/images/mush-logo-white.png";
 import riddle from "~/assets/images/riddle.png";
 import tricolorLogo from "~/assets/images/tricolor-logo.png";
 import redPill from "~/assets/images/red-pill.png";
+import goldCap from "~/assets/images/gold-cap.png";
 import Socials from "~/components/Socials";
 
 const myFont = localFont({ src: "../assets/fonts/Bugaki-Regular.ttf" });
+
+const openSauce = localFont({
+  src: "../assets/fonts/OpenSauceSans-Regular.ttf",
+});
 
 const Home: NextPage = () => {
   const [hide, setHide] = useState(false);
@@ -89,13 +95,13 @@ const Home: NextPage = () => {
               </p>
             </div>
           </div>
-          <div className="relative flex min-h-[750px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10 sm:min-h-[640px] md:min-h-[600px] lg:min-h-[650px] lg:py-0">
+          <div className="relative flex min-h-[835px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10 sm:min-h-[750px] md:min-h-[700px] lg:min-h-[820px] lg:py-0">
             <video
               autoPlay
               muted
               loop
               playsInline
-              className="scale-[7.3] brightness-[80%] sm:scale-[2.4] md:scale-[1.8] lg:scale-[1.3] xl:scale-[1.1]"
+              className="scale-5_8 scale-[8.3] brightness-[80%] sm:scale-[3.1] md:scale-[2.1] lg:scale-[1.9] xl:scale-[1.31]"
             >
               <source
                 src="https://d1uc5ptgdyrytu.cloudfront.net/liquid-gold-1080.mp4"
@@ -200,20 +206,25 @@ const Home: NextPage = () => {
                 </div> */}
                 </div>
               </div>
-              <div className="relative pb-10">
-                <p className="absolute -top-[1px] text-lg font-semibold leading-5 text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)]">
+              <div className="relative">
+                <p className="absolute -top-[1px] text-lg font-semibold leading-5 text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] ">
                   Find a Golden Capsule to win huge prizes, including 25% off
                   for life!
                 </p>
-                <p className="absolute top-[1px] text-lg font-semibold leading-5 text-red-500 drop-shadow">
+                <p className="absolute top-[1px] text-lg font-semibold leading-5 text-red-500">
                   Find a Golden Capsule to win huge prizes, including 25% off
                   for life!
                 </p>
-                <p className="text-lg font-semibold leading-5 text-white drop-shadow">
+                <p className="relative text-lg font-semibold leading-5 text-white">
                   Find a Golden Capsule to win huge prizes, including 25% off
                   for life!
                 </p>
               </div>
+              <Image
+                className="max-w-[100px] animate-float py-5 lg:max-w-[180px]"
+                src={goldCap}
+                alt=""
+              />
               <div className="relative">
                 <p className="absolute -top-[2px] text-4xl font-semibold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)]">
                   {`FIND GOLD, WIN BIG. IT'S THAT PSIMPLE.`}
@@ -282,8 +293,11 @@ const Home: NextPage = () => {
                 </h1>
               </div>
               <div className="relative space-y-5">
-                <div className="space-y-3 text-end text-sm lg:text-base">
-                  <p className="text-white">
+                <div
+                  style={openSauce.style}
+                  className="space-y-3 text-end text-sm lg:text-base"
+                >
+                  <p className="text-white drop-shadow">
                     Psilocybin is a naturally occurring psychoactive compound
                     found in certain species of mushrooms. Over the years,
                     psilocybin has been widely studied for its therapeutic
@@ -294,7 +308,7 @@ const Home: NextPage = () => {
                     enhancing mental health and cognitive function.
                   </p>
 
-                  <p className="text-white">
+                  <p className="text-white drop-shadow">
                     {`Studies have shown that psilocybin microdosing can have a
                 positive effect on mental health, including reducing symptoms of
                 anxiety and depression, improving mood and creativity, and
@@ -307,8 +321,11 @@ const Home: NextPage = () => {
                 depression symptoms.`}
                   </p>
                 </div>
-                <div className="space-y-3 text-sm lg:text-base">
-                  <p className="text-white">
+                <div
+                  style={openSauce.style}
+                  className="space-y-3 text-sm lg:text-base"
+                >
+                  <p className="text-white drop-shadow">
                     {`Furthermore, psilocybin has been found to have a unique
                     ability to affect brain function by increasing neural
                     plasticity, or the brain's ability to adapt and change in
@@ -318,7 +335,7 @@ const Home: NextPage = () => {
                     patterns of thought and behavior.`}
                   </p>
 
-                  <p className="text-white">
+                  <p className="text-white drop-shadow">
                     {`In a study published in the Journal of Psychopharmacology,
                 Stamets et al. (2018) found that psilocybin microdosing could
                 have profound effects on mental health, stating that
