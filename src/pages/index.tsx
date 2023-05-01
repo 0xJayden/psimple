@@ -72,9 +72,9 @@ const Home: NextPage = () => {
             <Image className=" h-full max-w-[150px]" src={logo} alt="" />
             <Image className="h-full max-w-[50px]" src={whiteMushLogo} alt="" />
           </div>
-          <div className="height-bg1 height-bg2 height-bg3 relative flex h-[440px] items-center justify-center overflow-hidden">
+          <div className="height-bg1 height-bg2 height-768 height-bg3 relative flex h-[440px] items-center justify-center overflow-hidden">
             <Image
-              className="scale-2_1 scale-bg1 scale-bg2 scale-[2.5] brightness-90"
+              className="scale-375 scale-1650 scale-640 scale-1024 scale-1280 scale-768 scale-[2.7] brightness-90"
               src={bg}
               alt=""
             />
@@ -156,7 +156,7 @@ const Home: NextPage = () => {
               <div className="flex w-full justify-between px-3 py-5 md:px-20">
                 <div className="relative">
                   <Image
-                    className="max-w-[120px] drop-shadow-[0_10px_10px_rgba(0,0,0,1)] lg:max-w-[200px]"
+                    className="max-w-[120px] lg:max-w-[200px]"
                     src={blueCap}
                     alt=""
                   />
@@ -171,7 +171,7 @@ const Home: NextPage = () => {
                 </div>
                 <div className="relative">
                   <Image
-                    className="max-w-[120px] drop-shadow-[0_10px_10px_rgba(0,0,0,1)] lg:max-w-[200px]"
+                    className="max-w-[120px] lg:max-w-[200px]"
                     src={redCap}
                     alt=""
                   />
@@ -186,7 +186,7 @@ const Home: NextPage = () => {
                 </div>
                 <div className="relative">
                   <Image
-                    className="max-w-[120px] drop-shadow-[0_10px_10px_rgba(0,0,0,1)] lg:max-w-[200px]"
+                    className="max-w-[120px] lg:max-w-[200px]"
                     src={purpleCap}
                     alt=""
                   />
