@@ -89,13 +89,13 @@ const Home: NextPage = () => {
               </p>
             </div>
           </div>
-          <div className="relative flex max-h-[730px] min-h-[725px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10 sm:min-h-[640px] md:min-h-[600px] lg:min-h-[650px] lg:py-0">
+          <div className="relative flex min-h-[750px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10 sm:min-h-[640px] md:min-h-[600px] lg:min-h-[650px] lg:py-0">
             <video
               autoPlay
               muted
               loop
               playsInline
-              className="scale-5_8 scale-[7.1] brightness-[80%] sm:scale-[2.4] md:scale-[1.8] lg:scale-[1.3] xl:scale-[1.1]"
+              className="scale-[7.3] brightness-[80%] sm:scale-[2.4] md:scale-[1.8] lg:scale-[1.3] xl:scale-[1.1]"
             >
               <source
                 src="https://d1uc5ptgdyrytu.cloudfront.net/liquid-gold-1080.mp4"
