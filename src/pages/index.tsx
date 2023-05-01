@@ -28,7 +28,7 @@ const Home: NextPage = () => {
 
     setTimeout(() => {
       setHide2(true);
-    }, 7000);
+    }, 6700);
   }, []);
 
   return (
