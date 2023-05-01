@@ -95,71 +95,71 @@ const Home: NextPage = () => {
               </p>
             </div>
           </div>
-          <div className="relative flex min-h-[835px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10 sm:min-h-[750px] md:min-h-[700px] lg:min-h-[820px] lg:py-0">
+          <div className="relative flex min-h-[835px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10 sm:min-h-[750px] md:min-h-[700px] lg:min-h-[980px] lg:py-0">
             <video
               autoPlay
               muted
               loop
               playsInline
-              className="scale-5_8 scale-[8.3] brightness-[80%] sm:scale-[3.1] md:scale-[2.1] lg:scale-[1.9] xl:scale-[1.31]"
+              className="scale-5_8 scale-[8.3] brightness-[80%] sm:scale-[3.1] md:scale-[2.1] lg:scale-[2.5] xl:scale-[1.85]"
             >
               <source
                 src="https://d1uc5ptgdyrytu.cloudfront.net/liquid-gold-1080.mp4"
                 type="video/mp4"
               />
             </video>
-            <div className="absolute flex flex-col items-center p-2 text-center lg:p-10">
+            <div className="absolute flex flex-col items-center p-2 pt-0 text-center lg:p-10 xl:p-20 xl:pt-10">
               <div className="relative pb-3">
-                <h1 className=" absolute -top-[2px] text-2xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-4xl">
+                <h1 className=" absolute -top-[2px] text-2xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-4xl lg:text-6xl">
                   Welcome to pSimple.
                 </h1>
-                <h1 className=" absolute top-[2px] text-2xl font-bold text-red-500 drop-shadow sm:text-4xl">
+                <h1 className=" absolute top-[2px] text-2xl font-bold text-red-500 drop-shadow sm:text-4xl lg:text-6xl">
                   Welcome to pSimple.
                 </h1>
-                <h1 className="text-2xl font-bold text-white drop-shadow sm:text-4xl">
+                <h1 className="text-2xl font-bold text-white drop-shadow sm:text-4xl lg:text-6xl">
                   Welcome to pSimple.
                 </h1>
               </div>
-              <div className="relative pb-5">
-                <h1 className="absolute -top-[2px] text-2xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-4xl">
+              <div className="relative pb-5 lg:pb-10">
+                <h1 className="absolute -top-[2px] text-2xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-4xl lg:text-6xl">
                   Making psilocybin, simple.
                 </h1>
-                <h1 className="absolute top-[2px] text-2xl font-bold text-red-500 drop-shadow sm:text-4xl">
+                <h1 className="absolute top-[2px] text-2xl font-bold text-red-500 drop-shadow sm:text-4xl lg:text-6xl">
                   Making psilocybin, simple.
                 </h1>
-                <h1 className="text-2xl font-bold text-white drop-shadow sm:text-4xl">
+                <h1 className="text-2xl font-bold text-white drop-shadow sm:text-4xl lg:text-6xl">
                   Making psilocybin, simple.
                 </h1>
               </div>
-              <div className="relative pb-5">
-                <p className="absolute -top-[1px] text-lg font-semibold leading-5 text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)]">
+              <div className="relative max-w-[1250px] pb-5">
+                <p className="absolute -top-[1px] text-lg font-semibold leading-5 text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] lg:text-2xl">
                   Empowering people to unlock their full potential through
                   subtle microdoses of organic & adaptogenic mushroom compounds.
                 </p>
-                <p className="absolute top-[1px] text-lg font-semibold leading-5 text-red-500 drop-shadow">
+                <p className="absolute top-[1px] text-lg font-semibold leading-5 text-red-500 drop-shadow lg:text-2xl">
                   Empowering people to unlock their full potential through
                   subtle microdoses of organic & adaptogenic mushroom compounds.
                 </p>
-                <p className=" text-lg font-semibold leading-5 text-white drop-shadow">
+                <p className=" text-lg font-semibold leading-5 text-white drop-shadow lg:text-2xl">
                   Empowering people to unlock their full potential through
                   subtle microdoses of organic & adaptogenic mushroom compounds.
                 </p>
               </div>
               <div className="relative">
-                <p className="absolute -top-[1px] text-lg font-semibold leading-5 text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)]">
+                <p className="absolute -top-[1px] text-lg font-semibold leading-5 text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] lg:text-2xl">
                   Our Matrix color coding system makes finding the perfect dose,
                   pSimple!
                 </p>
-                <p className="absolute top-[1px] text-lg font-semibold leading-5 text-red-500 drop-shadow">
+                <p className="absolute top-[1px] text-lg font-semibold leading-5 text-red-500 drop-shadow lg:text-2xl">
                   Our Matrix color coding system makes finding the perfect dose,
                   pSimple!
                 </p>
-                <p className="text-lg font-semibold leading-5 text-white drop-shadow">
+                <p className="text-lg font-semibold leading-5 text-white drop-shadow lg:text-2xl">
                   Our Matrix color coding system makes finding the perfect dose,
                   pSimple!
                 </p>
               </div>
-              <div className="flex w-full justify-between px-3 py-5 md:px-20">
+              <div className="flex w-full justify-between px-3 py-5 md:px-20 lg:py-10">
                 <div className="relative">
                   <Image
                     className="max-w-[120px] lg:max-w-[200px]"
@@ -207,15 +207,15 @@ const Home: NextPage = () => {
                 </div>
               </div>
               <div className="relative">
-                <p className="absolute -top-[1px] text-lg font-semibold leading-5 text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] ">
+                <p className="absolute -top-[1px] text-lg font-semibold leading-5 text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] lg:text-2xl">
                   Find a Golden Capsule to win huge prizes, including 25% off
                   for life!
                 </p>
-                <p className="absolute top-[1px] text-lg font-semibold leading-5 text-red-500">
+                <p className="absolute top-[1px] text-lg font-semibold leading-5 text-red-500 lg:text-2xl">
                   Find a Golden Capsule to win huge prizes, including 25% off
                   for life!
                 </p>
-                <p className="relative text-lg font-semibold leading-5 text-white">
+                <p className="relative text-lg font-semibold leading-5 text-white lg:text-2xl">
                   Find a Golden Capsule to win huge prizes, including 25% off
                   for life!
                 </p>
