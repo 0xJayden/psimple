@@ -13,6 +13,7 @@ import whiteMushLogo from "~/assets/images/mush-logo-white.png";
 import riddle from "~/assets/images/riddle.png";
 import tricolorLogo from "~/assets/images/tricolor-logo.png";
 import redPill from "~/assets/images/red-pill.png";
+import Socials from "~/components/Socials";
 
 const myFont = localFont({ src: "../assets/fonts/Bugaki-Regular.ttf" });
 
@@ -23,11 +24,11 @@ const Home: NextPage = () => {
   useEffect(() => {
     setTimeout(() => {
       setHide(true);
-    }, 8600);
+    }, 9300);
 
     setTimeout(() => {
       setHide2(true);
-    }, 5000);
+    }, 7000);
   }, []);
 
   return (
@@ -42,12 +43,13 @@ const Home: NextPage = () => {
         className="relative flex min-h-screen flex-col items-center bg-black"
       >
         {!hide2 && (
-          <div className="fixed inset-0 z-20 flex items-center justify-center p-5 sm:p-20">
+          <div className="fixed inset-0 z-20 flex flex-col items-center justify-center p-5 sm:p-20">
             <Image
               className="max-w-[200px] animate-show2"
               src={tricolorLogo}
               alt=""
             />
+            <Image className="max-w-[200px] animate-show3" src={logo} alt="" />
           </div>
         )}
         {!hide && (
@@ -87,7 +89,7 @@ const Home: NextPage = () => {
               </p>
             </div>
           </div>
-          <div className="relative flex min-h-[725px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10 sm:min-h-[620px] md:min-h-[550px] lg:max-h-[550px] lg:py-0">
+          <div className="relative flex min-h-[725px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10 sm:min-h-[620px] md:min-h-[550px] lg:max-h-[650px] lg:py-0">
             <video
               autoPlay
               muted
@@ -154,7 +156,7 @@ const Home: NextPage = () => {
               <div className="flex w-full justify-between px-3 py-5 md:px-20">
                 <div className="relative">
                   <Image
-                    className="max-w-[120px] drop-shadow-[0_10px_10px_rgba(0,0,0,1)]"
+                    className="max-w-[120px] drop-shadow-[0_10px_10px_rgba(0,0,0,1)] lg:max-w-[200px]"
                     src={blueCap}
                     alt=""
                   />
@@ -169,7 +171,7 @@ const Home: NextPage = () => {
                 </div>
                 <div className="relative">
                   <Image
-                    className="max-w-[120px] drop-shadow-[0_10px_10px_rgba(0,0,0,1)]"
+                    className="max-w-[120px] drop-shadow-[0_10px_10px_rgba(0,0,0,1)] lg:max-w-[200px]"
                     src={redCap}
                     alt=""
                   />
@@ -184,7 +186,7 @@ const Home: NextPage = () => {
                 </div>
                 <div className="relative">
                   <Image
-                    className="max-w-[120px] drop-shadow-[0_10px_10px_rgba(0,0,0,1)]"
+                    className="max-w-[120px] drop-shadow-[0_10px_10px_rgba(0,0,0,1)] lg:max-w-[200px]"
                     src={purpleCap}
                     alt=""
                   />
@@ -223,6 +225,9 @@ const Home: NextPage = () => {
                   {`FIND GOLD, WIN BIG. IT'S THAT PSIMPLE.`}
                 </p>
               </div>
+            </div>
+            <div className="absolute bottom-10 flex w-full items-center justify-center">
+              <Socials />
             </div>
           </div>
           <div className="flex w-full items-center justify-center overflow-hidden bg-[rgb(133,93,238)] p-2 py-10">
@@ -266,7 +271,7 @@ const Home: NextPage = () => {
             />
             <div className="max-w-[1200px] space-y-5">
               <div className="relative text-end">
-                <h1 className="absolute -top-[2px] right-0 text-2xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-4xl lg:text-5xl">
+                <h1 className="absolute -top-[2px] right-0 text-2xl font-bold text-cyan-400 drop-shadow sm:text-4xl lg:text-5xl">
                   THE PSCIENCE
                 </h1>
                 <h1 className="absolute right-0 top-[2px] text-2xl font-bold text-red-500 drop-shadow sm:text-4xl lg:text-5xl">
@@ -325,6 +330,9 @@ const Home: NextPage = () => {
                 cognitive function.`}
                   </p>
                 </div>
+              </div>
+              <div className="flex w-full items-center justify-center">
+                <Socials />
               </div>
             </div>
           </div>
