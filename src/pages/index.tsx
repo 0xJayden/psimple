@@ -37,7 +37,7 @@ const Home: NextPage = () => {
           console.log("Playing", videoElements[i]?.played);
         } else {
           // video is not playing so play video now
-          videoElements[i]?.play();
+          videoElements[i]?.play().catch((err) => console.log(err));
           console.log("Not Playing");
         }
       }
