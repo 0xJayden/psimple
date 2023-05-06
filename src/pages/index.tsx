@@ -2,7 +2,6 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import localFont from "next/font/local";
-import { Raleway, Roboto_Mono } from "next/font/google";
 import { useEffect, useState } from "react";
 
 import bg from "~/assets/images/bg.png";
@@ -27,7 +26,30 @@ const Home: NextPage = () => {
   const [hide, setHide] = useState(false);
   const [hide2, setHide2] = useState(false);
 
+  function playVideoOnLowPower() {
+    try {
+      const videoElements = document.querySelectorAll("video");
+      console.log(videoElements);
+
+      for (let i = 0; i < videoElements.length; i++) {
+        if (videoElements[i]?.played.length !== 0) {
+          // video is already playing so do nothing
+          console.log("Playing", videoElements[i]?.played);
+        } else {
+          // video is not playing so play video now
+          videoElements[i]?.play();
+          console.log("Not Playing");
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   useEffect(() => {
+    document.body.addEventListener("click", playVideoOnLowPower);
+    document.body.addEventListener("touchstart", playVideoOnLowPower);
+
     setTimeout(() => {
       setHide(true);
     }, 9300);
