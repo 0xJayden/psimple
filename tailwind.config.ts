@@ -34,6 +34,16 @@ export default {
           "50%": { transform: "translateY(-20px)" },
           "100%": { transform: "translateY(20px)" },
         },
+        slideRight: {
+          "0%": { opacity: "0", transform: "translateX(-100%)" },
+          "90%": { opacity: "0", transform: "translateX(-100%)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        slideLeft: {
+          "0%": { opacity: "0", transform: "translateX(100%)" },
+          "95%": { opacity: "0", transform: "translateX(100%)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
       },
     },
     animation: {
@@ -42,6 +52,8 @@ export default {
       show2: "show2 7300ms ease-in-out",
       show3: "show3 7300ms ease-in-out",
       float: "float 2000ms ease-in-out infinite",
+      slideRight: "slideRight 7000ms ease-in-out",
+      slideLeft: "slideLeft 7000ms ease-in-out",
     },
   },
   plugins: [],

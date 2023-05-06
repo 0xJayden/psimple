@@ -75,8 +75,16 @@ const Home: NextPage = () => {
         )}
         <div className="animate-show">
           <div className="fixed top-0 z-10 flex w-full justify-between p-2 lg:p-5 lg:px-10">
-            <Image className=" h-full max-w-[150px]" src={logo} alt="" />
-            <Image className="h-full max-w-[50px]" src={whiteMushLogo} alt="" />
+            <Image
+              className="h-full max-w-[150px] animate-slideRight"
+              src={logo}
+              alt=""
+            />
+            <Image
+              className="h-full max-w-[50px] animate-slideLeft"
+              src={whiteMushLogo}
+              alt=""
+            />
           </div>
           <div className="height-bg1 height-bg2 height-768 height-bg3 relative flex h-[440px] items-center justify-center overflow-hidden">
             <Image
