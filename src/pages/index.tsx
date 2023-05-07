@@ -62,9 +62,9 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Psimple</title>
-        <meta name="description" content="pSimple Site" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>pSimple</title>
+        <meta name="description" content="pSimple" />
+        <link rel="icon" href="/myfavicon.ico" />
       </Head>
       <main
         style={myFont.style}
