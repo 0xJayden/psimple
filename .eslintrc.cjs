@@ -29,12 +29,27 @@ const config = {
       },
     ],
     "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
-    "@typescript-eslint/no-unsafe-return": "off",
-    "@typescript-eslint/no-unsafe-assignment": "off",
-    "@typescript-eslint/no-unsafe-member-access": "off",
-    "@typescript-eslint/no-unsafe-call": "off",
-    "@typescript-eslint/restrict-template-expressions": "off",
-    "@typescript-eslint/restrict-plus-operands": "off",
+    "@typescript-eslint/no-unsafe-return": [
+      "warn",
+      { argsIgnorePattern: "^_" },
+    ],
+    "@typescript-eslint/no-unsafe-assignment": [
+      "warn",
+      { argsIgnorePattern: "^_" },
+    ],
+    "@typescript-eslint/no-unsafe-member-access": [
+      "warn",
+      { argsIgnorePattern: "^_" },
+    ],
+    "@typescript-eslint/no-unsafe-call": ["warn", { argsIgnorePattern: "^_" }],
+    "@typescript-eslint/restrict-template-expressions": [
+      "warn",
+      { argsIgnorePattern: "^_" },
+    ],
+    "@typescript-eslint/restrict-plus-operands": [
+      "warn",
+      { argsIgnorePattern: "^_" },
+    ],
   },
 };
 
