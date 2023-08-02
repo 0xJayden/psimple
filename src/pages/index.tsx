@@ -4,19 +4,31 @@ import Image from "next/image";
 import localFont from "next/font/local";
 import { useEffect, useState } from "react";
 
-import bg from "~/assets/images/bg.png";
+import merchBg from "~/assets/images/merchbg.png";
+import giveaway from "~/assets/images/giveaway.png";
 import logo from "~/assets/images/logo.png";
-import redCap from "~/assets/images/red-cap.png";
-import blueCap from "~/assets/images/blue-cap.png";
-import purpleCap from "~/assets/images/purple-cap.png";
-import whiteMushLogo from "~/assets/images/mush-logo-white.png";
-import riddle from "~/assets/images/riddle.png";
 import tricolorLogo from "~/assets/images/tricolor-logo.png";
 import redPill from "~/assets/images/red-pill.png";
 import goldCap from "~/assets/images/gold-cap.png";
+import goldInfo from "~/assets/images/goldInfo.png";
 import Socials from "~/components/Socials";
+import bluePill from "~/assets/images/bluePill.png";
+import blueInfo from "~/assets/images/blueInfo.png";
+import redInfo from "~/assets/images/redInfo.png";
+import purplePill from "~/assets/images/purplePill.png";
+import purpleInfo from "~/assets/images/purpleInfo.png";
+import { api } from "~/utils/api";
+import TopNavbar from "~/components/TopNavbar";
+import MerchPopup from "~/components/MerchPopup";
+import goldCopy from "~/assets/images/goldCopy.png";
+import blueCopy from "~/assets/images/blueCopy.png";
+import redCopy from "~/assets/images/redCopy.png";
+import purpleCopy from "~/assets/images/purpleCopy.png";
+import { cartAtom } from "~/components/MerchPopup";
+import { useAtom } from "jotai";
+import { PlusIcon } from "@heroicons/react/24/outline";
 
-const myFont = localFont({ src: "../assets/fonts/Bugaki-Regular.ttf" });
+export const myFont = localFont({ src: "../assets/fonts/Bugaki-Regular.ttf" });
 
 const openSauce = localFont({
   src: "../assets/fonts/OpenSauceSans-Regular.ttf",
@@ -25,11 +37,25 @@ const openSauce = localFont({
 const Home: NextPage = () => {
   const [hide, setHide] = useState(false);
   const [hide2, setHide2] = useState(false);
+  const [popupOpen, setPopupOpen] = useState(false);
+  const [merchItem, setMerchItem] = useState<any>(null);
+  const [cart, setCart] = useAtom(cartAtom);
+  const [addToCartSuccess, setAddToCartSuccess] = useState(false);
+
+  const merchItems = api.example.getItems.useQuery(undefined, {
+    onSuccess: (data) => {
+      console.log(data, "data");
+    },
+    onError: (err) => {
+      console.log(err, "error");
+    },
+    refetchOnWindowFocus: false,
+  });
 
   function playVideoOnLowPower() {
     try {
       const videoElements = document.querySelectorAll("video");
-      console.log(videoElements);
+      // console.log(videoElements, "videoElements");
 
       for (let i = 0; i < videoElements.length; i++) {
         if (videoElements[i]?.played.length !== 0) {
@@ -42,22 +68,62 @@ const Home: NextPage = () => {
         }
       }
     } catch (err) {
-      console.log(err);
+      console.log(err, "playing video error");
     }
   }
 
-  useEffect(() => {
-    document.body.addEventListener("click", playVideoOnLowPower);
-    document.body.addEventListener("touchstart", playVideoOnLowPower);
+  const openMerchPopup = (item: any) => {
+    console.log("item", item);
+    setPopupOpen(true);
+    setMerchItem(item);
+  };
 
-    setTimeout(() => {
-      setHide(true);
-    }, 9300);
+  const renderMerchItems = () => {
+    return merchItems.isLoading ? (
+      "loading..."
+    ) : merchItems.isError ? (
+      <p>Error loading merch</p>
+    ) : merchItems.data && merchItems.data.result ? (
+      merchItems.data.result.map((item: any) => {
+        return (
+          <div
+            key={item.name}
+            onClick={() => {
+              openMerchPopup(item);
+            }}
+            className="flex flex-col items-center space-y-1 overflow-hidden text-white"
+          >
+            <Image
+              className="rounded-lg shadow-lg lg:h-[200px] lg:w-[200px]"
+              width={150}
+              height={150}
+              src={item.thumbnail_url}
+              alt=""
+            />
+            <p className="text-center sm:text-2xl">{item.name}</p>
+          </div>
+        );
+      })
+    ) : (
+      <p>
+        Something went wrong. Make sure the internet connection is solid and
+        refresh the page.
+      </p>
+    );
+  };
 
-    setTimeout(() => {
-      setHide2(true);
-    }, 6700);
-  }, []);
+  // useEffect(() => {
+  //   document.body.addEventListener("click", playVideoOnLowPower);
+  //   document.body.addEventListener("touchstart", playVideoOnLowPower);
+
+  //   setTimeout(() => {
+  //     setHide(true);
+  //   }, 9300);
+
+  //   setTimeout(() => {
+  //     setHide2(true);
+  //   }, 6700);
+  // }, []);
 
   return (
     <>
@@ -68,9 +134,11 @@ const Home: NextPage = () => {
       </Head>
       <main
         style={myFont.style}
-        className="relative flex min-h-screen flex-col items-center bg-black"
+        className={`relative flex min-h-screen flex-col items-center ${
+          hide ? "bg-yellow-400" : "bg-black"
+        }`}
       >
-        {!hide2 && (
+        {/* {!hide2 && (
           <div className="fixed inset-0 z-20 flex flex-col items-center justify-center p-5 sm:p-20">
             <Image
               className="max-w-[200px] animate-show2"
@@ -94,216 +162,313 @@ const Home: NextPage = () => {
               />
             </video>
           </div>
-        )}
-        <div className="animate-show">
-          <div className="fixed top-0 z-10 flex w-full justify-between p-2 lg:p-5 lg:px-10">
-            <Image
-              className="h-full max-w-[150px] animate-slideRight"
-              src={logo}
-              alt=""
-            />
-            <Image
-              className="h-full max-w-[50px] animate-slideLeft"
-              src={whiteMushLogo}
-              alt=""
-            />
+        )} */}
+        <div
+          className={`fixed bottom-2 z-[70] flex h-20 w-[95%] max-w-[600px] items-center justify-center space-x-4 rounded-lg bg-green-500/80 text-white backdrop-blur-xl ${
+            addToCartSuccess
+              ? "animate-popUp"
+              : "opacity-0 transition-all duration-500 ease-in-out"
+          }`}
+        >
+          <div className="flex items-center">
+            <PlusIcon className="h-8 w-8" />
+            <p className="text-2xl">1</p>
           </div>
-          <div className="height-bg1 height-bg2 height-768 height-bg3 relative flex h-[440px] items-center justify-center overflow-hidden">
+          <h1>Secret item added to cart...</h1>
+        </div>
+        <div className="animate-show">
+          <TopNavbar setPopupOpen={setPopupOpen} />
+          {popupOpen && (
+            <MerchPopup item={merchItem} setPopupOpen={setPopupOpen} />
+          )}
+          <div className="height-bg1 height-bg2 height-768 height-bg3 relative flex h-[440px] items-center justify-center overflow-hidden sm:h-[600px]">
             <Image
               className="scale-375 scale-1650 scale-640 scale-1024 scale-1280 scale-768 scale-[2.7] brightness-90"
-              src={bg}
+              src={merchBg}
               alt=""
             />
-            <div className="absolute space-y-4 p-2 text-center">
-              <h1 className="bg-gradient-to-b from-[rgb(255,224,112)] via-[rgb(255,249,210)] to-[rgb(255,224,112)] bg-clip-text text-4xl font-bold text-transparent drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-5xl xl:text-6xl">
-                A GOLDEN AGE OF WELLNESS AWAITS...
+            <Image
+              className="absolute w-[90%] max-w-[800px] pb-12"
+              src={giveaway}
+              alt=""
+            />
+            <div className="absolute bottom-20 w-full">
+              <div className="absolute left-0 right-0 mx-auto h-8 w-[290px] rounded-full bg-blue-500 opacity-50 blur sm:h-10 sm:w-[430px]"></div>
+              <h1 className="text-center text-2xl font-bold text-[#fffefe] drop-shadow sm:text-4xl">
+                ENTER THE MATRIX
               </h1>
             </div>
-            <div className="bottom-p1 absolute bottom-5 left-5 lg:left-20 xl:left-[300px]">
-              <p className="bg-gradient-to-b from-[rgb(228,201,101)] via-[rgb(255,249,210)] to-[rgb(228,201,101)] bg-clip-text text-5xl text-transparent drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-7xl">
-                25% OFF
-              </p>
+            <div className="absolute bottom-5">
+              <Socials />
             </div>
           </div>
-          <div className="relative flex min-h-[835px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-10 sm:min-h-[750px] md:min-h-[700px] lg:min-h-[1000px] lg:py-0">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="scale-5_8 scale-[8.3] brightness-[80%] sm:scale-[3.1] md:scale-[2.1] lg:scale-[2.55] xl:scale-[1.85]"
-            >
-              <source
-                src="https://d1uc5ptgdyrytu.cloudfront.net/liquid-gold-1080.mp4"
-                type="video/mp4"
-              />
-            </video>
-            <div className="absolute flex flex-col items-center p-2 pt-0 text-center lg:p-10 xl:p-20 xl:pt-10">
-              <div className="relative pb-3">
-                <h1 className=" absolute -top-[2px] text-2xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-4xl lg:text-6xl">
-                  Welcome to pSimple.
-                </h1>
-                <h1 className=" absolute top-[2px] text-2xl font-bold text-red-500 drop-shadow sm:text-4xl lg:text-6xl">
-                  Welcome to pSimple.
-                </h1>
-                <h1 className="text-2xl font-bold text-white drop-shadow sm:text-4xl lg:text-6xl">
-                  Welcome to pSimple.
-                </h1>
-              </div>
-              <div className="relative pb-5 lg:pb-10">
-                <h1 className="absolute -top-[2px] text-2xl font-bold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-4xl lg:text-6xl">
-                  Making psilocybin, simple.
-                </h1>
-                <h1 className="absolute top-[2px] text-2xl font-bold text-red-500 drop-shadow sm:text-4xl lg:text-6xl">
-                  Making psilocybin, simple.
-                </h1>
-                <h1 className="text-2xl font-bold text-white drop-shadow sm:text-4xl lg:text-6xl">
-                  Making psilocybin, simple.
-                </h1>
-              </div>
-              <div className="relative max-w-[1250px] pb-5">
-                <p className="absolute -top-[1px] text-lg font-semibold leading-5 text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] lg:text-2xl">
-                  Empowering people to unlock their full potential through
-                  subtle microdoses of organic & adaptogenic mushroom compounds.
-                </p>
-                <p className="absolute top-[1px] text-lg font-semibold leading-5 text-red-500 drop-shadow lg:text-2xl">
-                  Empowering people to unlock their full potential through
-                  subtle microdoses of organic & adaptogenic mushroom compounds.
-                </p>
-                <p className=" text-lg font-semibold leading-5 text-white drop-shadow lg:text-2xl">
-                  Empowering people to unlock their full potential through
-                  subtle microdoses of organic & adaptogenic mushroom compounds.
-                </p>
-              </div>
-              <div className="relative">
-                <p className="absolute -top-[1px] text-lg font-semibold leading-5 text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] lg:text-2xl">
-                  Our Matrix color coding system makes finding the perfect dose,
-                  pSimple!
-                </p>
-                <p className="absolute top-[1px] text-lg font-semibold leading-5 text-red-500 drop-shadow lg:text-2xl">
-                  Our Matrix color coding system makes finding the perfect dose,
-                  pSimple!
-                </p>
-                <p className="text-lg font-semibold leading-5 text-white drop-shadow lg:text-2xl">
-                  Our Matrix color coding system makes finding the perfect dose,
-                  pSimple!
-                </p>
-              </div>
-              <div className="flex w-full justify-between px-3 py-5 md:px-20 lg:py-10">
-                <div className="relative">
-                  <Image
-                    className="max-w-[120px] lg:max-w-[200px]"
-                    src={blueCap}
-                    alt=""
-                  />
-                  {/* <div className="absolute bottom-0 left-0 right-0 top-5"> */}
-                  {/* <h1 className="text-4xl font-bold italic text-[rgb(106,150,200)] drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-5xl">
-                    Blue
-                  </h1>
-                  <p className="text-xl font-bold italic text-[rgb(106,150,200)] drop-shadow-[0_5px_5px_rgba(0,0,0,1)]">
-                    100
-                  </p> */}
-                  {/* </div> */}
-                </div>
-                <div className="relative">
-                  <Image
-                    className="max-w-[120px] lg:max-w-[200px]"
-                    src={redCap}
-                    alt=""
-                  />
-                  {/* <div className="absolute bottom-0 left-0 right-0 top-5">
-                  <h1 className=" text-4xl font-bold italic text-[rgb(203,75,69)] drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-5xl">
-                    Red
-                  </h1>
-                  <p className="text-xl font-bold italic text-[rgb(203,75,69)] drop-shadow-[0_5px_5px_rgba(0,0,0,1)]">
-                    300
-                  </p>
-                </div> */}
-                </div>
-                <div className="relative">
-                  <Image
-                    className="max-w-[120px] lg:max-w-[200px]"
-                    src={purpleCap}
-                    alt=""
-                  />
-                  {/* <div className="absolute bottom-0 left-0 right-0 top-5">
-                  <h1 className=" text-4xl font-bold italic text-[rgb(140,109,195)] drop-shadow-[0_10px_10px_rgba(0,0,0,1)] sm:text-5xl">
-                    Purple
-                  </h1>
-                  <p className="text-xl font-bold italic text-[rgb(140,109,195)] drop-shadow-[0_5px_5px_rgba(0,0,0,1)]">
-                    500
-                  </p>
-                </div> */}
-                </div>
-              </div>
-              <div className="relative">
-                <p className="absolute -top-[1px] text-lg font-semibold leading-5 text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] lg:text-2xl">
-                  Find a Golden Capsule to win huge prizes, including 25% off
-                  for life!
-                </p>
-                <p className="absolute top-[1px] text-lg font-semibold leading-5 text-red-500 lg:text-2xl">
-                  Find a Golden Capsule to win huge prizes, including 25% off
-                  for life!
-                </p>
-                <p className="relative text-lg font-semibold leading-5 text-white lg:text-2xl">
-                  Find a Golden Capsule to win huge prizes, including 25% off
-                  for life!
-                </p>
-              </div>
-              <Image
-                className="max-w-[100px] animate-float py-5 lg:max-w-[180px]"
-                src={goldCap}
-                alt=""
-              />
-              <div className="relative">
-                <p className="absolute -top-[2px] text-4xl font-semibold text-cyan-400 drop-shadow-[0_10px_10px_rgba(0,0,0,1)] lg:text-[37px] xl:text-[45px]">
-                  {`FIND GOLD, WIN BIG. IT'S THAT PSIMPLE.`}
-                </p>
-                <p className="absolute top-[2px] text-4xl font-semibold text-red-500 drop-shadow lg:text-[37px] xl:text-[45px]">
-                  {`FIND GOLD, WIN BIG. IT'S THAT PSIMPLE.`}
-                </p>
-                <p className="text-4xl font-semibold text-white drop-shadow lg:text-[37px] xl:text-[45px]">
-                  {`FIND GOLD, WIN BIG. IT'S THAT PSIMPLE.`}
-                </p>
-              </div>
+          <div className="relative flex min-h-[300px] flex-col items-center space-y-4 bg-gradient-to-b from-[rgb(213,187,59)] via-[#f0da32] to-[rgb(220,197,83)] p-2 py-4 sm:p-5 md:p-10">
+            <div className="relative">
+              <h1 className="absolute -top-[2px] text-5xl font-bold text-cyan-400 drop-shadow sm:text-4xl lg:text-5xl">
+                MERCH
+              </h1>
+              <h1 className="absolute top-[2px] text-5xl font-bold text-red-500 drop-shadow sm:text-4xl lg:text-5xl">
+                MERCH
+              </h1>
+              <h1 className="text-5xl font-bold text-white drop-shadow sm:text-4xl lg:text-5xl">
+                MERCH
+              </h1>
+            </div>
+            <div className="relative grid grid-cols-2 gap-4 py-4 pb-10 lg:gap-8">
+              {renderMerchItems()}
             </div>
             <div className="absolute bottom-3 flex w-full items-center justify-center">
               <Socials />
             </div>
           </div>
-          <div className="flex w-full items-center justify-center overflow-hidden bg-[rgb(133,93,238)] p-2 py-10">
-            <div className="relative w-full max-w-[1250px]">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="max-w-sphere absolute -left-5 bottom-10 max-w-[300px] sm:bottom-[40px] sm:max-w-[510px] md:bottom-5 md:max-w-[700px] lg:-bottom-5 lg:left-16 lg:max-w-[850px] xl:-bottom-20 xl:max-w-[1100px]"
-              >
-                <source
-                  src="https://d1uc5ptgdyrytu.cloudfront.net/golden-sphere-purple.mp4"
-                  type="video/mp4"
-                />
-              </video>
-              <h1 className=" bg-gradient-to-b from-[rgb(228,201,101)] via-[rgb(255,249,210)] to-[rgb(228,201,101)] bg-clip-text text-center text-4xl font-bold text-transparent drop-shadow-[0_3px_10px_rgba(150,150,0,1)] sm:text-6xl sm:drop-shadow-[0_5px_13px_rgba(150,150,0,1)]">
+          <div className="hidden w-full lg:flex">
+            <div className="relative w-1/2 bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)]">
+              <Image
+                className="absolute bottom-0 top-0 my-auto opacity-50"
+                src={goldCap}
+                alt=""
+              />
+              <h1 className="relative pt-5 text-center text-4xl font-bold text-[#fff8f8] drop-shadow-lg">
                 THE GOLDEN AGE
               </h1>
-              <div className="relative flex w-full justify-end">
-                <Image
-                  className="w-[80%] max-w-[600px] lg:mr-20"
-                  src={riddle}
-                  alt=""
-                />
-                {/* <div className="radial-gradient absolute right-5 h-[200px] w-[200px] rounded-full opacity-50"></div>
-                <p className="w-2/3 p-5 text-center font-semibold italic text-[rgb(251,221,112)] drop-shadow">
-                {`"With a shiny hue and a heart of gold, you may find me among the fold. For those who behold, riches untold. 3 of me, one unto each, a golden treat, just within reach."`}
-                </p> */}
+              <Image
+                // onClick={() => {
+                //   const itemExists = cart.find((item) => item.name === "Golds");
+                //   if (itemExists) {
+                //     itemExists.quantity += 1;
+                //     setCart([...cart]);
+                //     setAddToCartSuccess(true);
+                //     return setTimeout(() => setAddToCartSuccess(false), 3000);
+                //   }
+                //   setCart((prev) => [
+                //     ...prev,
+                //     { name: "Golds", quantity: 1, price: "30.00" },
+                //   ]);
+                //   setAddToCartSuccess(true);
+                //   setTimeout(() => setAddToCartSuccess(false), 3000);
+                // }}
+                src={goldCopy}
+                alt=""
+                className="absolute bottom-0 top-0 my-auto drop-shadow-lg"
+              />
+              <div className="absolute bottom-3 flex w-full items-center justify-center">
+                <Socials />
               </div>
-              <p className="textLg bg-gradient-to-b from-[rgb(228,201,101)] via-[rgb(255,249,210)] to-[rgb(228,201,101)] bg-clip-text pt-10 text-center text-sm text-transparent drop-shadow-[0_0_5px_rgba(150,150,0,1)] sm:text-3xl sm:drop-shadow-[0_3px_10px_rgba(150,150,0,1)] md:text-4xl">
-                25% OFF UNTIL ALL 3 ARE FOUND!
-              </p>
+            </div>
+            <Image className="w-1/2" src={goldInfo} alt="" />
+          </div>
+          <div className="relative flex min-h-[400px] flex-col items-center overflow-hidden bg-gradient-to-r from-[rgb(214,189,90)] via-[rgb(248,236,187)] to-[rgb(214,189,90)] p-2 py-4 sm:min-h-[750px] lg:hidden lg:py-0">
+            <Image
+              className="absolute bottom-0 top-0 my-auto opacity-50"
+              src={goldCap}
+              alt=""
+            />
+            <h1 className="relative text-center text-4xl font-bold text-[#fff8f8] drop-shadow-lg sm:text-5xl">
+              THE GOLDEN AGE
+            </h1>
+            <Image
+              // onClick={() => {
+              //   const itemExists = cart.find((item) => item.name === "Golds");
+              //   if (itemExists) {
+              //     itemExists.quantity += 1;
+              //     setCart([...cart]);
+              //     setAddToCartSuccess(true);
+              //     return setTimeout(() => setAddToCartSuccess(false), 3000);
+              //   }
+
+              //   setCart((prev) => [
+              //     ...prev,
+              //     { name: "Golds", quantity: 1, price: "30.00" },
+              //   ]);
+              //   setAddToCartSuccess(true);
+              //   setTimeout(() => setAddToCartSuccess(false), 3000);
+              // }}
+              src={goldCopy}
+              alt=""
+              className="absolute bottom-0 top-0 my-auto drop-shadow-lg"
+            />
+            <div className="absolute bottom-3 flex w-full items-center justify-center">
+              <Socials />
             </div>
           </div>
+          <div className="relative flex min-h-[300px] flex-col items-center justify-center lg:hidden">
+            <Image src={goldInfo} alt="" />
+          </div>
+          <div className="hidden w-full lg:flex">
+            <Image className="w-1/2" src={blueInfo} alt="" />
+            <div className="flex w-1/2 items-center justify-center bg-[rgb(93,181,249)]">
+              <Image
+                className="absolute opacity-50 md:max-w-[600px] lg:max-w-[490px]"
+                src={bluePill}
+                alt=""
+              />
+
+              <Image
+                // onClick={() => {
+                //   const itemExists = cart.find((item) => item.name === "Blues");
+                //   if (itemExists) {
+                //     itemExists.quantity += 1;
+                //     setCart([...cart]);
+                //     setAddToCartSuccess(true);
+                //     return setTimeout(() => setAddToCartSuccess(false), 3000);
+                //   }
+                //   setCart((prev) => [
+                //     ...prev,
+                //     { name: "Blues", quantity: 1, price: "20.00" },
+                //   ]);
+                //   setAddToCartSuccess(true);
+                //   setTimeout(() => setAddToCartSuccess(false), 3000);
+                // }}
+                src={blueCopy}
+                alt=""
+                className="relative drop-shadow-lg"
+              />
+            </div>
+          </div>
+          <div className="relative flex min-h-[300px] items-center justify-center bg-[rgb(93,181,249)] p-2 sm:min-h-[550px] sm:p-5 md:min-h-[650px] md:p-10 lg:hidden">
+            <Image
+              className="absolute w-4/5 opacity-50 md:max-w-[600px] lg:max-w-[490px]"
+              src={bluePill}
+              alt=""
+            />
+            <Image
+              // onClick={() => {
+              //   const itemExists = cart.find((item) => item.name === "Blues");
+              //   if (itemExists) {
+              //     itemExists.quantity += 1;
+              //     setCart([...cart]);
+              //     setAddToCartSuccess(true);
+              //     return setTimeout(() => setAddToCartSuccess(false), 3000);
+              //   }
+              //   setCart((prev) => [
+              //     ...prev,
+              //     { name: "Blues", quantity: 1, price: "20.00" },
+              //   ]);
+              //   setAddToCartSuccess(true);
+              //   setTimeout(() => setAddToCartSuccess(false), 3000);
+              // }}
+              src={blueCopy}
+              alt=""
+              className="relative drop-shadow-lg"
+            />
+          </div>
+          <Image className="lg:hidden" src={blueInfo} alt="" />
+          <div className="hidden w-full lg:flex">
+            <div className="flex w-1/2 items-center justify-center bg-[rgb(236,99,94)]">
+              <Image
+                className="absolute opacity-50 md:max-w-[600px] lg:max-w-[490px]"
+                src={redPill}
+                alt=""
+              />
+
+              <Image
+                // onClick={() => {
+                //   const itemExists = cart.find((item) => item.name === "Reds");
+                //   if (itemExists) {
+                //     itemExists.quantity += 1;
+                //     setCart([...cart]);
+                //     setAddToCartSuccess(true);
+                //     return setTimeout(() => setAddToCartSuccess(false), 3000);
+                //   }
+                //   setCart((prev) => [
+                //     ...prev,
+                //     { name: "Reds", quantity: 1, price: "40.00" },
+                //   ]);
+                //   setAddToCartSuccess(true);
+                //   setTimeout(() => setAddToCartSuccess(false), 3000);
+                // }}
+                src={redCopy}
+                alt=""
+                className="relative drop-shadow-lg"
+              />
+            </div>
+            <Image className="w-1/2" src={redInfo} alt="" />
+          </div>
+          <div className="relative flex min-h-[300px] items-center justify-center bg-[rgb(236,99,94)] p-2 sm:min-h-[550px] sm:p-5 md:min-h-[650px] md:p-10 lg:hidden">
+            <Image
+              className="absolute w-4/5 opacity-50 md:max-w-[600px] lg:max-w-[490px]"
+              src={redPill}
+              alt=""
+            />
+            <Image
+              // onClick={() => {
+              //   const itemExists = cart.find((item) => item.name === "Reds");
+              //   if (itemExists) {
+              //     itemExists.quantity += 1;
+              //     setCart([...cart]);
+              //     setAddToCartSuccess(true);
+              //     return setTimeout(() => setAddToCartSuccess(false), 3000);
+              //   }
+              //   setCart((prev) => [
+              //     ...prev,
+              //     { name: "Reds", quantity: 1, price: "40.00" },
+              //   ]);
+              //   setAddToCartSuccess(true);
+              //   setTimeout(() => setAddToCartSuccess(false), 3000);
+              // }}
+              src={redCopy}
+              alt=""
+              className="relative drop-shadow-lg"
+            />
+          </div>
+          <Image className="lg:hidden" src={redInfo} alt="" />
+          <div className="hidden w-full lg:flex">
+            <Image className="w-1/2" src={purpleInfo} alt="" />
+            <div className="flex w-1/2 items-center justify-center bg-[rgb(159,52,209)]">
+              <Image
+                className="absolute opacity-50 md:max-w-[600px] lg:max-w-[490px]"
+                src={purplePill}
+                alt=""
+              />
+
+              <Image
+                // onClick={() => {
+                //   const itemExists = cart.find(
+                //     (item) => item.name === "Purples"
+                //   );
+                //   if (itemExists) {
+                //     itemExists.quantity += 1;
+                //     setCart([...cart]);
+                //     setAddToCartSuccess(true);
+                //     return setTimeout(() => setAddToCartSuccess(false), 3000);
+                //   }
+                //   setCart((prev) => [
+                //     ...prev,
+                //     { name: "Purples", quantity: 1, price: "60.00" },
+                //   ]);
+                //   setAddToCartSuccess(true);
+                //   setTimeout(() => setAddToCartSuccess(false), 3000);
+                // }}
+                src={purpleCopy}
+                alt=""
+                className="relative px-2 drop-shadow-lg"
+              />
+            </div>
+          </div>
+          <div className="relative flex min-h-[300px] items-center justify-center bg-[rgb(159,52,209)] p-4 px-6 sm:p-5 md:p-10 lg:hidden">
+            <Image className="w-4/5 opacity-50" src={purplePill} alt="" />
+            <Image
+              // onClick={() => {
+              //   const itemExists = cart.find((item) => item.name === "Purples");
+              //   if (itemExists) {
+              //     itemExists.quantity += 1;
+              //     setCart([...cart]);
+              //     setAddToCartSuccess(true);
+              //     return setTimeout(() => setAddToCartSuccess(false), 3000);
+              //   }
+              //   setCart((prev) => [
+              //     ...prev,
+              //     { name: "Purples", quantity: 1, price: "60.00" },
+              //   ]);
+              //   setAddToCartSuccess(true);
+              //   setTimeout(() => setAddToCartSuccess(false), 3000);
+              // }}
+              src={purpleCopy}
+              alt=""
+              className="absolute px-2 drop-shadow-lg"
+            />
+          </div>
+          <Image className="lg:hidden" src={purpleInfo} alt="" />
           <div className="relative flex items-center justify-center bg-[rgb(236,99,94)] p-2 sm:p-5 md:p-10">
             <Image
               className="absolute w-4/5 opacity-40 md:max-w-[600px] lg:max-w-[490px]"

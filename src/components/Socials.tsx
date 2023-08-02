@@ -6,7 +6,7 @@ import Telegram from "~/assets/images/Telegram.png";
 
 export default function Socials() {
   return (
-    <div className="z-50 flex items-center space-x-4">
+    <div className="z-40 flex items-center space-x-4">
       <a href="https://twitter.com/psimplemind">
         <Image className="w-[35px]" src={Twitterpng} alt="" />
       </a>

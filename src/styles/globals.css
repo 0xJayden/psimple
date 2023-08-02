@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
 .radial-gradient {
   background: radial-gradient(
     circle 100px,
@@ -31,13 +36,13 @@
 
 @media (min-width: 640px) {
   .scale-640 {
-    transform: scale(1.35);
+    transform: scale(1.8);
   }
 }
 
 @media (min-width: 768px) {
   .scale-768 {
-    transform: scale(1.2);
+    transform: scale(1.5);
   }
 
   .height-768 {
@@ -67,7 +72,7 @@
 
 @media (min-width: 1650px) {
   .scale-1650 {
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
 
   .bottom-p1 {

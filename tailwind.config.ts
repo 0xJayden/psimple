@@ -44,6 +44,24 @@ export default {
           "95%": { opacity: "0", transform: "translateX(100%)" },
           "100%": { opacity: "1", transform: "translateX(0)" },
         },
+        slideIn: {
+          "0%": { opacity: "0", transform: "translateX(100%)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        slideOut: {
+          "0%": { opacity: "1", transform: "translateX(0)" },
+          "100%": { opacity: "0", transform: "translateX(100%)" },
+        },
+        bgcolorChange: {
+          "0%": { backgroundColor: "rgb(192 132 252 / 0.5)" },
+          "25%": { backgroundColor: "rgb(96 165 250 / 0.5)" },
+          "50%": { backgroundColor: "rgb(248 113 113 / 0.5)" },
+          "100%": { backgroundColor: "rgb(192 132 252 / 0.5)" },
+        },
+        popUp: {
+          "0%": { opacity: "0", transform: "translateY(100%)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
     },
     animation: {
@@ -54,6 +72,10 @@ export default {
       float: "float 2000ms ease-in-out infinite",
       slideRight: "slideRight 7000ms ease-in-out",
       slideLeft: "slideLeft 7000ms ease-in-out",
+      slideIn: "slideIn 500ms ease-in-out",
+      slideOut: "slideOut 500ms ease-in-out",
+      bgcolorChange: "bgcolorChange 10000ms ease-in-out infinite",
+      popUp: "popUp 500ms ease-in-out",
     },
   },
   plugins: [],
