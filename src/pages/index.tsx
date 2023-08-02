@@ -112,18 +112,18 @@ const Home: NextPage = () => {
     );
   };
 
-  // useEffect(() => {
-  //   document.body.addEventListener("click", playVideoOnLowPower);
-  //   document.body.addEventListener("touchstart", playVideoOnLowPower);
+  useEffect(() => {
+    document.body.addEventListener("click", playVideoOnLowPower);
+    document.body.addEventListener("touchstart", playVideoOnLowPower);
 
-  //   setTimeout(() => {
-  //     setHide(true);
-  //   }, 9300);
+    setTimeout(() => {
+      setHide(true);
+    }, 9300);
 
-  //   setTimeout(() => {
-  //     setHide2(true);
-  //   }, 6700);
-  // }, []);
+    setTimeout(() => {
+      setHide2(true);
+    }, 6700);
+  }, []);
 
   return (
     <>
@@ -138,7 +138,7 @@ const Home: NextPage = () => {
           hide ? "bg-yellow-400" : "bg-black"
         }`}
       >
-        {/* {!hide2 && (
+        {!hide2 && (
           <div className="fixed inset-0 z-20 flex flex-col items-center justify-center p-5 sm:p-20">
             <Image
               className="max-w-[200px] animate-show2"
@@ -162,7 +162,7 @@ const Home: NextPage = () => {
               />
             </video>
           </div>
-        )} */}
+        )}
         <div
           className={`fixed bottom-2 z-[70] flex h-20 w-[95%] max-w-[600px] items-center justify-center space-x-4 rounded-lg bg-green-500/80 text-white backdrop-blur-xl ${
             addToCartSuccess
