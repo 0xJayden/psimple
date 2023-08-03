@@ -80,7 +80,18 @@ const Home: NextPage = () => {
 
   const renderMerchItems = () => {
     return merchItems.isLoading ? (
-      "loading..."
+      <div className="absolute flex h-full w-full items-center justify-center pb-5">
+        <div className="flex flex-col items-center justify-center">
+          <Image
+            className="max-w-[150px] animate-float"
+            src={tricolorLogo}
+            alt=""
+          />
+          <p className="pt-5 text-center text-2xl text-white">
+            Loading merch...
+          </p>
+        </div>
+      </div>
     ) : merchItems.isError ? (
       <p>Error loading merch</p>
     ) : merchItems.data && merchItems.data.result ? (
@@ -198,7 +209,7 @@ const Home: NextPage = () => {
                 ENTER THE MATRIX
               </h1>
             </div>
-            <div className="absolute bottom-5">
+            <div className="absolute bottom-5 animate-show">
               <Socials />
             </div>
           </div>
@@ -214,10 +225,10 @@ const Home: NextPage = () => {
                 MERCH
               </h1>
             </div>
-            <div className="relative grid grid-cols-2 gap-4 py-4 pb-10 lg:gap-8">
+            <div className="relative grid min-h-[300px] grid-cols-2 gap-4 py-4 pb-10 lg:gap-8">
               {renderMerchItems()}
             </div>
-            <div className="absolute bottom-3 flex w-full items-center justify-center">
+            <div className="absolute bottom-3 flex w-full animate-show items-center justify-center">
               <Socials />
             </div>
           </div>
@@ -251,7 +262,7 @@ const Home: NextPage = () => {
                 alt=""
                 className="absolute bottom-0 top-0 my-auto drop-shadow-lg"
               />
-              <div className="absolute bottom-3 flex w-full items-center justify-center">
+              <div className="absolute bottom-3 flex w-full animate-show items-center justify-center">
                 <Socials />
               </div>
             </div>
@@ -287,7 +298,7 @@ const Home: NextPage = () => {
               alt=""
               className="absolute bottom-0 top-0 my-auto drop-shadow-lg"
             />
-            <div className="absolute bottom-3 flex w-full items-center justify-center">
+            <div className="absolute bottom-3 flex w-full animate-show items-center justify-center">
               <Socials />
             </div>
           </div>
@@ -325,7 +336,7 @@ const Home: NextPage = () => {
               />
             </div>
           </div>
-          <div className="relative flex min-h-[300px] items-center justify-center bg-[rgb(93,181,249)] p-2 sm:min-h-[550px] sm:p-5 md:min-h-[650px] md:p-10 lg:hidden">
+          <div className="relative flex min-h-[350px] items-center justify-center bg-[rgb(93,181,249)] p-2 sm:min-h-[550px] sm:p-5 md:min-h-[650px] md:p-10 lg:hidden">
             <Image
               className="absolute w-4/5 opacity-50 md:max-w-[600px] lg:max-w-[490px]"
               src={bluePill}
@@ -384,7 +395,7 @@ const Home: NextPage = () => {
             </div>
             <Image className="w-1/2" src={redInfo} alt="" />
           </div>
-          <div className="relative flex min-h-[300px] items-center justify-center bg-[rgb(236,99,94)] p-2 sm:min-h-[550px] sm:p-5 md:min-h-[650px] md:p-10 lg:hidden">
+          <div className="relative flex min-h-[350px] items-center justify-center bg-[rgb(236,99,94)] p-2 sm:min-h-[550px] sm:p-5 md:min-h-[650px] md:p-10 lg:hidden">
             <Image
               className="absolute w-4/5 opacity-50 md:max-w-[600px] lg:max-w-[490px]"
               src={redPill}
@@ -445,7 +456,7 @@ const Home: NextPage = () => {
               />
             </div>
           </div>
-          <div className="relative flex min-h-[300px] items-center justify-center bg-[rgb(159,52,209)] p-4 px-6 sm:p-5 md:p-10 lg:hidden">
+          <div className="relative flex min-h-[350px] items-center justify-center bg-[rgb(159,52,209)] p-4 px-6 sm:p-5 md:p-10 lg:hidden">
             <Image className="w-4/5 opacity-50" src={purplePill} alt="" />
             <Image
               // onClick={() => {
@@ -543,7 +554,7 @@ const Home: NextPage = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex w-full items-center justify-center">
+              <div className="flex w-full animate-show items-center justify-center">
                 <Socials />
               </div>
             </div>
