@@ -8,23 +8,17 @@ import {
   TrashIcon,
   XCircleIcon,
 } from "@heroicons/react/24/outline";
-import {
-  Elements,
-  LinkAuthenticationElement,
-  PaymentElement,
-  useElements,
-  useStripe,
-} from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+// import {
+//   Elements,
+//   LinkAuthenticationElement,
+//   PaymentElement,
+//   useElements,
+//   useStripe,
+// } from "@stripe/react-stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
 import { useAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
-import {
-  Dispatch,
-  FormEvent,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 
 import logo from "~/assets/images/logo.png";
@@ -78,21 +72,19 @@ const countryAtom = atomWithStorage("country", "");
 const zipAtom = atomWithStorage("zip", "");
 const phoneAtom = atomWithStorage("phone", "");
 const emailAtom = atomWithStorage("email", "");
+// const dataAtom = atomWithStorage<
+//   | {
+//       shipping: number;
+//       tax: number;
+//       orderAmount: any;
+//       trueFinalAmount: any;
+//       finalAmount: number;
+//       metadataItems: any[];
+//     }
+//   | undefined
+// >("data", undefined);
 
-// const itemsAtom = atomWithStorage("items", [
-//   {
-//     id: 0,
-//     variant_id: 0,
-//     quantity: 0,
-//   },
-// ]);
-
-const Confirmation = ({
-  setConfirmation,
-  confirmation,
-}: // data,
-ConfirmationProps) => {
-  // const [email, setEmail] = useState<string>("");
+const Confirmation = ({ setConfirmation, confirmation }: ConfirmationProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState<string>();
   // const [data, setData] = useState<{
@@ -105,6 +97,7 @@ ConfirmationProps) => {
   //   trueFinalAmount: any;
   // }>();
   const [error, setError] = useState<string>();
+  // const [data, setData] = useAtom(dataAtom);
 
   const [cart, setCart] = useAtom(cartAtom);
   const [firstName, setFirstName] = useAtom(firstNameAtom);
@@ -135,6 +128,7 @@ ConfirmationProps) => {
     {
       onSuccess: (data) => {
         console.log(data, "get order details data");
+        // setData(data);
       },
       onError: (error) => {
         console.log(error, "get order details error");
@@ -222,28 +216,26 @@ ConfirmationProps) => {
             <>
               <div className="flex justify-between">
                 <p className="font-bold">Subtotal:</p>
-                <p className="font-bold">${data?.orderAmount.toFixed(2)}</p>
+                <p className="font-bold">${data.orderAmount.toFixed(2)}</p>
               </div>
               <div className="flex justify-between">
                 <p className="font-bold">Tax:</p>
-                <p className="font-bold">${data?.tax.toFixed(2)}</p>
+                <p className="font-bold">${data.tax.toFixed(2)}</p>
               </div>
               <div className="flex justify-between">
                 <p className="font-bold">Shipping:</p>
                 <p className="font-bold">
                   {data?.shipping === 0
                     ? "FREE!"
-                    : "$" + data?.shipping.toFixed(2)}
+                    : "$" + data.shipping.toFixed(2)}
                 </p>
               </div>
               <div className="flex justify-between">
                 <p className="text-lg font-bold">Total:</p>
-                <p className="text-lg font-bold">${data?.trueFinalAmount}</p>
+                <p className="text-lg font-bold">${data.trueFinalAmount}</p>
               </div>
             </>
-          ) : (
-            "Loading..."
-          )}
+          ) : null}
         </div>
         {isLoading && (
           <div className=" fixed inset-0 z-[999] flex h-full w-full items-center justify-center backdrop-brightness-[.2]">
@@ -257,28 +249,48 @@ ConfirmationProps) => {
             </div>
           </div>
         )}
-        <PayPalButtons
-          createOrder={(data, actions) => {
-            setIsLoading(true);
-            setMessage("Creating order");
+        {data ? (
+          <PayPalButtons
+            createOrder={(data, actions) => {
+              setIsLoading(true);
+              setMessage("Creating order");
 
-            return createOrder
-              .mutateAsync(
-                {
-                  recipient: {
-                    firstName: firstName,
-                    lastName: lastName,
-                    address1: address,
-                    city,
-                    country,
-                    state,
-                    zip: +zip,
-                    phone,
-                    email,
+              return createOrder
+                .mutateAsync(
+                  {
+                    recipient: {
+                      firstName: firstName,
+                      lastName: lastName,
+                      address1: address,
+                      city,
+                      country,
+                      state,
+                      zip: +zip,
+                      phone,
+                      email,
+                    },
+                    items: cart,
                   },
-                  items: cart,
-                },
-                {
+                  {
+                    onSuccess: (res) => {
+                      console.log(res, "res");
+                      setIsLoading(false);
+                    },
+                    onError: (err) => {
+                      console.log(err, "err");
+                      setIsLoading(false);
+                      setError(err.message);
+                    },
+                  }
+                )
+                .then((order) => order.id);
+            }}
+            onApprove={(data2, actions) => {
+              setIsLoading(true);
+              setMessage("Approving payment");
+
+              return captureOrder
+                .mutateAsync(data2.orderID, {
                   onSuccess: (res) => {
                     console.log(res, "res");
                     setIsLoading(false);
@@ -288,62 +300,52 @@ ConfirmationProps) => {
                     setIsLoading(false);
                     setError(err.message);
                   },
-                }
-              )
-              .then((order) => order.id);
-          }}
-          onApprove={(data2, actions) => {
-            setIsLoading(true);
-            setMessage("Approving payment");
+                })
+                .then((orderData) => {
+                  setIsLoading(true);
+                  setMessage("Ordering items");
+                  // const items = data?.metadataItems;
+                  // console.log(data?.metadataItems, "metadata items");
+                  // console.log(items, "items to be ordered");
 
-            return captureOrder
-              .mutateAsync(data2.orderID, {
-                onSuccess: (res) => {
-                  console.log(res, "res");
-                  setIsLoading(false);
-                },
-                onError: (err) => {
-                  console.log(err, "err");
-                  setIsLoading(false);
-                  setError(err.message);
-                },
-              })
-              .then((orderData) => {
-                setIsLoading(true);
-                setMessage("Ordering items");
-                const items = data?.metadataItems;
-                console.log(data?.metadataItems, "metadata items");
-                console.log(items, "items to be ordered");
+                  // if (!items) {
+                  //   console.log("no items");
+                  //   setIsLoading(false);
+                  //   setError(
+                  //     "No items were found. Contact us for help and we will make sure you get your order!"
+                  //   );
+                  //   return;
+                  // }
 
-                if (!items) return console.log("no items");
+                  const payer = {
+                    firstName,
+                    lastName,
+                    address1: address,
+                    city,
+                    country,
+                    state,
+                    zip: +zip,
+                    phone,
+                    email,
+                  };
 
-                const payer = {
-                  firstName,
-                  lastName,
-                  address1: address,
-                  city,
-                  country,
-                  state,
-                  zip: +zip,
-                  phone,
-                  email,
-                };
+                  orderItems.mutate(
+                    { cart, payer },
+                    {
+                      onSuccess: (res) => {
+                        console.log(res, "res");
 
-                orderItems.mutate(
-                  { items, payer },
-                  {
-                    onSuccess: (res) => {
-                      console.log(res, "res");
+                        if (res.result) {
+                          setMessage(
+                            "Order placed successfully! Sending email"
+                          );
+                          console.log(res.result, "result");
 
-                      if (res.result) {
-                        setMessage("Order placed successfully! Sending email");
-                        console.log(res.result, "result");
-
-                        const msg = {
-                          to: email,
-                          from: "Neo <matrixmerchllc@gmail.com>",
-                          subject: "Order Confirmation",
-                          html: `<h4>Hello ${firstName},</h4>
+                          const msg = {
+                            to: email,
+                            from: "Neo <matrixmerchllc@gmail.com>",
+                            subject: "Order Confirmation",
+                            html: `<h4>Hello ${firstName},</h4>
                             <p>Thank you for your order! Your order number is ${
                               res.result.result.id
                             }.</p>
@@ -357,11 +359,11 @@ ConfirmationProps) => {
                             <p>Subtotal: $${data.orderAmount}</p>
                             <p>Tax: $${data.tax}</p>
                             <p>Shipping: ${
-                              data?.shipping === 0
+                              data.shipping === 0
                                 ? "FREE!"
-                                : "$" + data?.shipping.toFixed(2)
+                                : "$" + data.shipping.toFixed(2)
                             }</p>
-                            <p>Total: $${data?.trueFinalAmount}</p>
+                            <p>Total: $${data.trueFinalAmount}</p>
                             </div>
                             <p>Shipping Address:</p>
                             <p>${firstName} ${lastName}</p>
@@ -373,40 +375,52 @@ ConfirmationProps) => {
                             <p>If you have any questions or concerns, you may reply to this email. Thank you and mush love.</p>
                             <p>Neo</p>
                             `,
-                        };
+                          };
 
-                        sendEmail.mutate(msg, {
-                          onSuccess: (res) => {
-                            console.log(res, "res");
-                            setIsLoading(false);
-                            setCart([]);
-                            router.push("/success");
-                          },
-                          onError: (err) => {
-                            console.log(err, "err");
-                            setIsLoading(false);
-                            setError(err.message);
-                          },
-                        });
-                      }
+                          sendEmail.mutate(msg, {
+                            onSuccess: (res) => {
+                              console.log(res, "res");
+                              setIsLoading(false);
+                              setCart([]);
+                              router.push("/success");
+                            },
+                            onError: (err) => {
+                              console.log(err, "err");
+                              setIsLoading(false);
+                              setError(err.message);
+                            },
+                          });
+                        }
 
-                      if (res.error) {
+                        if (res.error) {
+                          setIsLoading(false);
+                          setError(
+                            "Error ordering items, please contact Neo for support"
+                          );
+                        }
+                      },
+                      onError: (err) => {
+                        console.log(err, "err");
                         setIsLoading(false);
-                        setError(
-                          "Error ordering items, please contact Neo for support"
-                        );
-                      }
-                    },
-                    onError: (err) => {
-                      console.log(err, "err");
-                      setIsLoading(false);
-                      setError(err.message);
-                    },
-                  }
-                );
-              });
-          }}
-        />
+                        setError(err.message);
+                      },
+                    }
+                  );
+                });
+            }}
+          />
+        ) : (
+          <div className=" fixed inset-0 z-[999] flex h-full w-full items-center justify-center backdrop-brightness-[.2]">
+            <div className="flex h-[300px] w-[90%] flex-col items-center justify-center">
+              <Image
+                className="max-w-[200px] animate-float"
+                src={tricolorLogo}
+                alt=""
+              />
+              <p className="pt-5 text-2xl text-white">Loading...</p>
+            </div>
+          </div>
+        )}
         {/* {data.clientSecret && (
           <form id="payment-form" onSubmit={(e) => handleSubmit(e)}>
             <LinkAuthenticationElement

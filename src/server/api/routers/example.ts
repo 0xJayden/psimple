@@ -486,23 +486,25 @@ export const exampleRouter = createTRPCRouter({
   orderItems: publicProcedure
     .input(
       z.object({
-        items: z.array(z.any()),
+        cart: z.array(
+          z.object({
+            id: z.number().optional(),
+            image: z.string().optional(),
+            name: z.string(),
+            price: z.string(),
+            quantity: z.number(),
+            variant_id: z.number().optional(),
+          })
+        ),
         payer: z.any(),
       })
     )
     .mutation(async ({ input }) => {
-      const inputItems = input.items.map((item) => {
-        return {
-          id: item.description,
-          quantity: item.quantity,
-        };
-      });
-
-      const { items } = await getItems(inputItems);
+      const { items } = await getItems(input.cart);
 
       for (const item of items) {
         // add quantity to item
-        item.quantity = inputItems.find(
+        item.quantity = input.cart.find(
           (inputItem) => inputItem.id === item.id
         )?.quantity;
 
@@ -510,6 +512,7 @@ export const exampleRouter = createTRPCRouter({
         const threadColorsExist = item.options.find(
           (option: any) => option.id === "thread_colors"
         );
+        console.log(threadColorsExist, "threadColorsExist");
         const threadColorsChestCenterExist = item.options.find(
           (option: any) => option.id === "thread_colors_chest_center"
         );
@@ -519,6 +522,10 @@ export const exampleRouter = createTRPCRouter({
         );
         const itemThreadColorOutsideLeftExist = item.options.find(
           (option: any) => option.id === "thread_colors_outside_left"
+        );
+        console.log(
+          itemThreadColorOutsideLeftExist,
+          "itemThreadColorOutsideLeftExist"
         );
 
         if (threadColorsExist) {
